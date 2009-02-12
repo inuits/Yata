@@ -1,6 +1,9 @@
-<%= link_to 'Timesheets', timesheets_path %><br/>
+<h1 align="center">Main menu</h1>
+<table class="menu">
+<tr><td><%= link_to 'Timesheets', timesheets_path %></td></tr>
 <% if current_authuser.id == 1 %>
-<%= link_to 'Timesheets for ALL Consultants', all_timesheets_path %><br/>
+<tr><td><%= link_to 'Timesheets for ALL Consultants', all_timesheets_path %></td></tr>
 <% end %>
-<%= link_to 'Customers', customers_path %><br/>
-<%= link_to 'Logout', "/logout" %><br/>
+<tr><td><%= link_to 'Customers', customers_path %></td></tr>
+<tr><td><%= link_to 'Logout', "/logout" %></td></tr>
+</table>

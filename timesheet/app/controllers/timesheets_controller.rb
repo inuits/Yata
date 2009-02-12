@@ -116,13 +116,10 @@ class TimesheetsController < ApplicationController
     @year= params[:year].to_i
 
     @day = Array.new
-    @hours= Hash.new
     @timesheets= Timesheet.find_all_by_authuser_id_and_year_and_month(params[:id], @year, @month)
-
 
     for timesheet in @timesheets
       num= @timesheets.index(timesheet)
-      logger.info("=========================== #{num} COUNT")
       @hours= Hour.find_all_by_timesheet_id(timesheet.id)
 
       for hour in @hours

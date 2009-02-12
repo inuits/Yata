@@ -1,15 +1,19 @@
 <% form_tag session_path do -%>
-<p><label for="login">Login</label><br/>
-<%= text_field_tag 'login' %></p>
 
-<p><label for="password">Password</label><br/>
-<%= password_field_tag 'password' %></p>
+<table class="menu">
+<tr><td><label for="login">Login</label></td>
+<td><%= text_field_tag 'login' %></td>
 
-<!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
--->
+<tr><td><label for="password">Password</label></td>
+<td><%= password_field_tag 'password' %></td>
 
-<p><%= submit_tag 'Log in' %></p>
-<p><%= link_to 'Create New User', :controller => 'authusers', :action => 'new' %>
+
+<tr><td colspan=2><label for="remember_me">Remember me:</label><%= check_box_tag 'remember_me' %></td></tr>
+<tr></tr>
+<tr><td colspan=2><%= submit_tag 'Log in' %></td></tr>
+</table>
+<p>
+<table class="menu">
+<tr><td><%= link_to 'Create New User', :controller => 'authusers', :action => 'new' %></td></tr>
+</table>
 <% end -%>

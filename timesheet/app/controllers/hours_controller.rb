@@ -1,4 +1,5 @@
 class HoursController < ApplicationController
+  before_filter :login_required
 
   # GET /hours/1/edit
   def edit
