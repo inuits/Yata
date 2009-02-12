@@ -1,0 +1,6 @@
+<%= link_to 'Timesheets', timesheets_path %><br/>
+<% if current_authuser.id == 1 %>
+<%= link_to 'Timesheets for ALL Consultants', all_timesheets_path %><br/>
+<% end %>
+<%= link_to 'Customers', customers_path %><br/>
+<%= link_to 'Logout', "/logout" %><br/>

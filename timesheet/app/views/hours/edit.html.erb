@@ -1,0 +1,36 @@
+<h1>Editing Hour</h1>
+
+<% form_for(@hour) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :day %><br />
+    <%= f.text_field :day %>
+  </p>
+  <p>
+    <%= f.label :detail %><br />
+    <%= f.text_field :detail %>
+  </p>
+  <p>
+    <%= f.label :normal %><br />
+    <%= f.text_field :normal %>
+  </p>
+  <p>
+    <%= f.label :rate2 %><br />
+    <%= f.text_field :rate2 %>
+  </p>
+  <p>
+    <%= f.label :rate3 %><br />
+    <%= f.text_field :rate3 %>
+  </p>
+  <p>
+    <%= f.label :travel %><br />
+    <%= f.text_field :travel %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Cancel', @hour.timesheet %>

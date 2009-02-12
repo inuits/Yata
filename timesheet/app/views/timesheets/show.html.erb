@@ -1,0 +1,88 @@
+<table class="ts" border="1">
+<tr><td class="ts-title">MONTHLY TIME REPORT</td></tr>
+<tr>
+  <td>
+    <table width="100%"><tr>
+      <td><table>
+	<tr>
+	  <td><b>Consultant:</b></td>
+	  <td><%=h @timesheet.authuser.fullname %></td>
+	</tr>
+	<tr>
+	  <td><b>Customer:</b></td>
+	  <td><%=h @timesheet.customer.name %></td>
+	</tr>
+      </table></td>
+      <td><table>
+	<tr>
+	  <td><b>Month:</b></td>
+	<td><%=h monthname(@timesheet.month) %></td>
+	</tr>
+	<tr>
+	  <td><b>Year:</b></td>
+	  <td><%=h @timesheet.year %></td>
+	</tr>
+      </table></td>
+    </table>
+  </td>
+</tr>
+
+<tr><td>
+    <% remote_form_for( :hour, @hour, 
+       :url => {:action => :create_hour, :id => @timesheet}, 
+    :update => "task-list",
+    :position => 'bottom',
+    :complete => "Element.hide('new-task')"
+    ) do |f| %>
+
+	<table id="task-list" class="ts-hours">
+	  <tr><th colspan=2 width="70%"></th><th width="30%" colspan=4>Hours</th></tr>
+	  <tr><th>Day</th><th width="60%">
+	      <%= link_to_function("Task", "Element.show('new-task')")%></th><th>Normal</th><th>150%</th><th>200%</th><th>Travel</th></tr>
+
+	  <tr id="new-task" bgcolor="yellow" style="display:none;">
+	    <td><%= f.text_field :day, :size => 3 %></td>
+	    <td width="60%"><%= f.text_field :detail %><%= submit_tag 'Add' %></td>
+	    <td><%= f.text_field :normal, :size => 3 %></td>
+	    <td><%= f.text_field :rate2, :size => 3 %></td>
+	    <td><%= f.text_field :rate3, :size => 3 %></td>
+	    <td><%= f.text_field :travel, :size => 3 %></td>
+	  </tr>
+	  <% for hour in @timesheet.hours %>
+	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
+	    <td width="5%"><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %></td>
+	    <td width="60%"><%=h hour.detail %></td>
+	    <td><%=h hour.normal %></td>
+	    <td><%=h hour.rate2 %></td>
+	    <td><%=h hour.rate3 %></td>
+	    <td><%=h hour.travel %></td>
+	  </tr>
+	  <% end %>
+
+
+	</table>
+      
+	<table class="ts-total">
+	  <tr><th colspan=2 width="70%"><th width="30%" colspan=4></th></tr>
+	  
+	  <tr align="center">
+	    <td colspan=2 align="right">Total</td>
+	    <td><%=h @timesheet.total_normal %></td>
+	    <td><%=h @timesheet.total_rate2 %></td>
+	    <td><%=h @timesheet.total_rate3 %></td>
+	    <td><%=h @timesheet.total_travel %></td>
+	  </tr>
+	</table>
+</tr></td>
+      
+
+<% end %>
+    
+</table>
+
+<div id="navigation">
+<%= link_to 'Edit', edit_timesheet_path(@timesheet) %> |
+<%= link_to 'Back', timesheets_path %>
+<%= link_to_function("Hide navigation", "Element.hide('navigation')")%>
+</div>
+

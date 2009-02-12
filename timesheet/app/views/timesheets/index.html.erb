@@ -1,0 +1,25 @@
+<h1>Listing timesheets for <%= current_authuser.fullname %></h1>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Customer</th>
+  </tr>
+
+<% for timesheet in @timesheets %>
+  <tr>
+    <td><%=h timesheet.year %></td>
+    <td><%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
+    <td><%=h timesheet.customer.name %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+    <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Menu', :controller => 'welcome'  %>
+<%= link_to 'New timesheet', new_timesheet_path %>

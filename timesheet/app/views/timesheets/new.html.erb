@@ -1,0 +1,22 @@
+<h1>New timesheet</h1>
+
+<% form_for(@timesheet) do |f| %>
+  <%= f.error_messages %>
+
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, Customer.find(:all).collect {|u| [ u.name, u.id ] } %>
+  </p>
+  <p>
+    <%= f.label :month %><br />
+    <%= f.select :month, monthnames %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.text_field :year, :limit => 4 %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', timesheets_path %>
