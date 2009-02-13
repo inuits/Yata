@@ -64,10 +64,12 @@ a:hover { color: #fff; background-color:#000; }
 
 .ts-hours {
     width: 100%;
+    border-spacing: 0;
 }
 
 .ts-total {
     width: 100%;
+    display:none;
 }
 
 .ts-hours th {
@@ -77,6 +79,23 @@ a:hover { color: #fff; background-color:#000; }
 .ts-hours td {
     text-align: center;
     border: 1px solid grey;
+}
+
+.ts-hours th#normal {
+    background-color: yellow;
+    border: 1px solid black;
+}
+.ts-hours th#rate2 {
+    background-color: green;
+    border: 1px solid black;
+}
+.ts-hours th#rate3 {
+    background-color: blue;
+    border: 1px solid black;
+}
+.ts-hours th#travel {
+    background-color: white;
+    border: 1px solid black;
 }
 
 .task-line-odd {
@@ -98,7 +117,7 @@ a:hover { color: #fff; background-color:#000; }
   overflow:auto;
 }
 
-#fooxter a {
+#footer a {
   display:block;
   width:94px;
   height:40px;  
@@ -116,4 +135,26 @@ a:hover { color: #fff; background-color:#000; }
 }
 .menu td {
     text-align: center;
+}
+
+.topmenu {
+    background-color: rgb(221, 221, 255); 
+    text-align: left; 
+    width: 100%; 
+    margin-bottom: 5px;
+}
+
+.topmenu td {
+    background-color: #eeeeff;
+    width: 50px;
+}
+
+.signature {
+    border: 2px solid black;
+    padding: 5px;
+    width: 45%;
+}
+.signature td {
+    border: 1px solid black;
+    height: 100px;
 }

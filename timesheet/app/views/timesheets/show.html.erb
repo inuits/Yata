@@ -1,33 +1,134 @@
-<table class="ts" border="1">
-<tr><td class="ts-title">MONTHLY TIME REPORT</td></tr>
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
 <tr>
-  <td>
-    <table width="100%"><tr>
-      <td><table>
-	<tr>
-	  <td><b>Consultant:</b></td>
-	  <td><%=h @timesheet.authuser.fullname %></td>
-	</tr>
-	<tr>
-	  <td><b>Customer:</b></td>
-	  <td><%=h @timesheet.customer.name %></td>
-	</tr>
-      </table></td>
-      <td><table>
-	<tr>
-	  <td><b>Month:</b></td>
-	<td><%=h monthname(@timesheet.month) %></td>
-	</tr>
-	<tr>
-	  <td><b>Year:</b></td>
-	  <td><%=h @timesheet.year %></td>
-	</tr>
-      </table></td>
-    </table>
-  </td>
+<td><%= link_to 'Menu', :controller => 'welcome' %></td>
+<td><%= link_to 'Timesheets', timesheets_path %></td>
+<td><%= link_to 'Edit header', edit_timesheet_path(@timesheet) %></td>
+<td><%= link_to_function("Add detail", "Element.show('new-task')")%>
 </tr>
+</tbody>
+</table>
 
-<tr><td>
+<TABLE FRAME=VOID CELLSPACING=0 COLS=10 RULES=NONE BORDER=0 WIDTH="100%">
+	<COLGROUP><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86></COLGROUP>
+
+	<TBODY>
+		<TR>
+			<TD COLSPAN=4 STYLE="border-top: 3px solid #000000; border-left: 3px solid #000000" WIDTH=86 HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial" SIZE=4>  MONTHLY TIME REPORT</FONT></B></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD STYLE="border-right: 3px solid #000000; border-top: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"></TD>
+			</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=17 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=RIGHT BGCOLOR="#FFFFFF"><IMG SRC="/images/inuits.png" /><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"> </TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><b><FONT FACE="Arial">Consultant:</b></FONT></b></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheet.authuser.fullname %></TD>
+			<TD><BR></TD>
+
+
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Month:</FONT></B></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= monthname(@timesheet.month) %></TD>
+
+
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial"><b>Customer:</b></FONT></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial" SIZE=4><BR></FONT></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheet.customer.name %></TD>
+			<TD><BR></TD>
+
+
+
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Year:</FONT></B></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF" SDNUM="1033;0;0"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= @timesheet.year %></TD>
+
+
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><BR></TD>
+			<TD ALIGN=LEFT><BR></TD>
+
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><BR></TD>
+			<TD ALIGN=LEFT><BR></TD>
+
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-bottom: 3px solid #000000; border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 3px solid #000000; border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+	</TBODY>
+
+</TABLE>
+<!-- ************************************************************************** -->
+
+<br/>
     <% remote_form_for( :hour, @hour, 
        :url => {:action => :create_hour, :id => @timesheet}, 
     :update => "task-list",
@@ -37,16 +138,15 @@
 
 	<table id="task-list" class="ts-hours">
 	  <tr><th colspan=2 width="70%"></th><th width="30%" colspan=4>Hours</th></tr>
-	  <tr><th>Day</th><th width="60%">
-	      <%= link_to_function("Task", "Element.show('new-task')")%></th><th>Normal</th><th>150%</th><th>200%</th><th>Travel</th></tr>
+	  <tr><th>Day</th><th width="60%">Task</th><th id="normal">Normal</th><th id="rate2">150%</th><th id="rate3">200%</th><th id="travel">Travel</th></tr>
 
 	  <tr id="new-task" bgcolor="yellow" style="display:none;">
-	    <td><%= f.text_field :day, :size => 3 %></td>
-	    <td width="60%"><%= f.text_field :detail %><%= submit_tag 'Add' %></td>
-	    <td><%= f.text_field :normal, :size => 3 %></td>
-	    <td><%= f.text_field :rate2, :size => 3 %></td>
-	    <td><%= f.text_field :rate3, :size => 3 %></td>
-	    <td><%= f.text_field :travel, :size => 3 %></td>
+	    <td><%= f.text_field :day, :size => 3, :tabindex => 1 %></td>
+	    <td width="60%"><%= f.text_field :detail, :tabindex => 2 %><%= submit_tag 'Add', :tabindex => 7 %></td>
+	    <td><%= f.text_field :normal, :size => 3, :tabindex => 3 %></td>
+	    <td><%= f.text_field :rate2, :size => 3, :tabindex => 4 %></td>
+	    <td><%= f.text_field :rate3, :size => 3, :tabindex => 5 %></td>
+	    <td><%= f.text_field :travel, :size => 3, :tabindex => 6 %></td>
 	  </tr>
 	  <% for hour in @timesheet.hours %>
 	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
@@ -73,16 +173,15 @@
 	    <td><%=h @timesheet.total_travel %></td>
 	  </tr>
 	</table>
-</tr></td>
       
 
 <% end %>
     
-</table>
+<br /><br />
 
-<div id="navigation">
-<%= link_to 'Edit', edit_timesheet_path(@timesheet) %> |
-<%= link_to 'Back', timesheets_path %>
-<%= link_to_function("Hide navigation", "Element.hide('navigation')")%>
-</div>
+    <table class="signature">
+      <tr><th>Signature Consultant</th><th>Signature Customer</th><tr>
+      <tr><td></td><td></td></tr>
+    </table>
+
 

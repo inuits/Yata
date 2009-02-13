@@ -1,6 +1,15 @@
-<h1>Listing timesheets for All Consultants</h1>
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New timesheet', new_timesheet_path %></td>
+</tr>
+</tbody>
+</table>
 
-<table>
+<h1 style="text-align: center;">Listing timesheets for All Consultants</h1>
+
+<table style="width: 294px; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
     <th>Consultant</th>
     <th>Year</th>
@@ -28,6 +37,3 @@
 </table>
 
 <br />
-
-<%= link_to 'Menu', :controller => 'welcome'  %>
-<%= link_to 'New timesheet', new_timesheet_path %>

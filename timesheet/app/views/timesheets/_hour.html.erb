@@ -1,5 +1,5 @@
 <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
-  <td width="40px"><%=h hour.day %></td>
+  <td width="40px"><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %></td>
   <td class="ts-detail"><%=h hour.detail %></td>
   <td><%=h hour.normal %></td>
   <td><%=h hour.rate2 %></td>

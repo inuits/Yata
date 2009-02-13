@@ -1,4 +1,12 @@
-<BODY TEXT="#000000">
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'Timesheets', :controller => 'timesheets' %></td>
+</tr>
+</tbody>
+</table>
+
 <TABLE FRAME=VOID CELLSPACING=0 COLS=10 RULES=NONE BORDER=0 WIDTH="100%">
 	<COLGROUP><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86></COLGROUP>
 
@@ -146,30 +154,30 @@ else
     @day[d.mday].each do |customer|
 
       if customer.nil?
-        cont += "<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>"
+        cont += "<tr><td id='normal'>0</td><td id='rate2'>0</td><td id='rate3'>0</td><td id='travel'>0</td></tr>"
       else
-        cont += "<tr><td>"
+        cont += "<tr><td id='normal'>"
         if not customer["normal"].nil?
           cont += "#{customer['normal']}"
           normal += customer["normal"]
         else
           cont += "0"
         end
-        cont += "</td><td>"
+        cont += "</td><td id='rate2'>"
         if not customer["rate2"].nil?
           cont += "#{customer['rate2']}"
           rate2 += customer["rate2"]
         else
           cont += "0"
         end
-        cont += "</td><td>"
+        cont += "</td><td id='rate3'>"
         if not customer["rate3"].nil?
           cont += "#{customer['rate3']}"
           rate3 += customer["rate3"]
         else
           cont += "0"
         end
-        cont += "</td><td>"
+        cont += "</td><td id='travel'>"
         if not customer["travel"].nil?
           cont += "#{customer['travel']}"
           travel += customer["travel"]
@@ -180,7 +188,7 @@ else
       end
       
     end
-    cont += "<tr class=\"gridtotal\"><td>#{normal}</td><td>#{rate2}</td><td>#{rate3}</td><td>#{travel}</td></tr></table>"
+    cont += "<tr class=\"gridtotal\"><td id='normal'>#{normal}</td><td id='rate2'>#{rate2}</td><td id='rate3'>#{rate3}</td><td id='travel'>#{travel}</td></tr></table>"
   [cont, {}]
 else
   [ "", {}]
@@ -189,4 +197,12 @@ end
 end
 %>
 
-
+<p>
+<table class="daygrid" width="100%">
+<tr bgcolor='#aaaaaa' style='text-align:center;'>
+  <td id='normal'>Normal</td>
+  <td id='rate2'>150%</td>
+  <td id='rate3'>200%</td>
+  <td id='travel'>Travel</td>
+</tr>
+</table>

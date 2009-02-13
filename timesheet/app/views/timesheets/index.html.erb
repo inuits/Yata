@@ -1,6 +1,19 @@
-<h1>Listing timesheets for <%= current_authuser.fullname %></h1>
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New timesheet', new_timesheet_path %></td>
+</tr>
+</tbody>
+</table>
 
-<table>
+
+
+
+
+<h1 style="text-align: center;">Listing timesheets for <%= current_authuser.fullname %></h1>
+
+<table style="width: 294px; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
     <th>Year</th>
     <th>Month</th>
@@ -13,7 +26,6 @@
     <td><%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
     <td><%=h timesheet.customer.name %></td>
     <td><%= link_to 'Show', timesheet %></td>
-    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
     <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -21,5 +33,3 @@
 
 <br />
 
-<%= link_to 'Menu', :controller => 'welcome'  %>
-<%= link_to 'New timesheet', new_timesheet_path %>

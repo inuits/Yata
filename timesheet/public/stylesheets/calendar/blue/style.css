@@ -28,24 +28,28 @@
   padding-bottom: 0.3em;
   background-color: #303030;
   color: white;
+  width: 180px;
 }
-
-.otherMonth, .day, .specialDay {
-  padding: 0.7em 1em;
-  border-right: 1px solid white;
-
-}
-
-.otherMonth {
-  color: #eeeeee;
-  background-color: white;
-}
-
 .day, .specialDay {
   text-align: center;
   border-bottom: 1px dotted #bbbbbb;
   background-color: #bbccff;
 }
+.weekendDay {
+  background-color: #ffffdd;
+}
+
+.otherMonth, .day, .specialDay {
+  padding: 0.7em 1em;
+  border-right: 1px solid white;
+  border-bottom: 1px dotted #bbbbbb;
+}
+
+.otherMonth {
+  color: #eeeeee;
+  background-color: #dddddd;
+}
+
 .specialDay {
   background-color: #003355;
   color: white;
@@ -59,14 +63,12 @@
   color: white;
   background-color: black;
 }
-.weekendDay {
-  background-color: #ffffdd;
-}
 .today{
 	background-color: #4682b4;
 }
 
 .code, .code a:visited {
+    height: 100%;
     width: 100%;
     color: white;
     background-color: #4682b4;
@@ -87,3 +89,15 @@
     padding-right: 0.2em;
 }
 
+.daygrid td#normal {
+    color: #ff00ff;
+}
+.daygrid td#rate2 {
+    color: green;
+}
+.daygrid td#rate3 {
+    color: blue;
+}
+.daygrid td#travel {
+    color: white;
+}

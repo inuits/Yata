@@ -1,3 +1,13 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'Timesheets', timesheets_path %></td>
+<td><%= link_to 'Show timesheet', @timesheet %></td>
+</tr>
+</tbody>
+</table>
+
 <h1>Editing timesheet</h1>
 
 <% form_for(@timesheet) do |f| %>
@@ -9,16 +19,14 @@
   </p>
   <p>
     <%= f.label :year %><br />
-    <%= f.date_select :year, :discard_day, :discard_month %>
+    <%= f.text_field :year, :size => 4 %>
   </p>
   <p>
     <%= f.label :month %><br />
-    <%= f.date_select :month, :discard_day, :discard_year %>
+    <%= f.text_field :month, :size => 2 %>
   </p>
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @timesheet %> |
-<%= link_to 'Back', timesheets_path %>

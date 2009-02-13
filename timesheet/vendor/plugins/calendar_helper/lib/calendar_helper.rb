@@ -107,7 +107,7 @@ module CalendarHelper
     end
     cal << %(<th colspan="#{colspan}" class="#{options[:month_name_class]}">#{Date::MONTHNAMES[options[:month]]}</th>)
     cal << %(<th colspan="2">#{options[:next_month_text]}</th>) if options[:next_month_text]
-    cal << %(</tr><tr class="#{options[:day_name_class]}"><th>CODE</th>)
+    cal << %(</tr><tr class="#{options[:day_name_class]}"><th scope='col'>CODE</th>)
     day_names.each do |d|
       unless d[options[:abbrev]].eql? d
         cal << "<th scope='col'><abbr title='#{d}'>#{d[options[:abbrev]]}</abbr></th>"
@@ -115,7 +115,7 @@ module CalendarHelper
         cal << "<th scope='col'>#{d[options[:abbrev]]}</th>"
       end
     end
-    cal << "</tr></thead><tbody><tr><td>"
+    cal << "</tr></thead><tbody><tr><td height='100%'>"
     cal << block.call(nil)
     cal << "</td>"
     beginning_of_week(first, first_weekday).upto(first - 1) do |d|
@@ -124,7 +124,7 @@ module CalendarHelper
       if options[:accessible]
         cal << %(">#{d.day}<span class="hidden"> #{Date::MONTHNAMES[d.month]}</span></td>)
       else
-        cal << %(">#{d.day}</td>)
+        cal << %("></td>)
       end
     end unless first.wday == first_weekday
     first.upto(last) do |cur|
@@ -136,7 +136,7 @@ module CalendarHelper
       cell_attrs[:class] += " today" if (cur == Date.today) and options[:show_today]  
       cell_attrs = cell_attrs.map {|k, v| %(#{k}="#{v}") }.join(" ")
       cal << "<td #{cell_attrs}>#{cell_text}</td>"
-      cal << "</tr><tr><td>"+block.call(nil)+"</td>" if cur.wday == last_weekday
+      cal << "</tr><tr><td height='100%'>"+block.call(nil)+"</td>" if cur.wday == last_weekday
     end
     (last + 1).upto(beginning_of_week(last + 7, first_weekday) - 1)  do |d|
       cal << %(<td class="#{options[:other_month_class]})
@@ -144,7 +144,7 @@ module CalendarHelper
       if options[:accessible]
         cal << %(">#{d.day}<span class='hidden'> #{Date::MONTHNAMES[d.mon]}</span></td>)
       else
-        cal << %(">#{d.day}</td>)        
+        cal << %("></td>)        
       end
     end unless last.wday == last_weekday
     cal << "</tr></tbody></table>"

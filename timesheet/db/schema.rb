@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090211100649) do
+ActiveRecord::Schema.define(:version => 20090213111139) do
 
   create_table "authusers", :force => true do |t|
     t.string   "login"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20090211100649) do
     t.datetime "updated_at"
   end
 
+  add_index "hours", ["timesheet_id"], :name => "fk_hours_timesheet_id"
+
   create_table "timesheets", :force => true do |t|
     t.integer  "authuser_id",                   :null => false
     t.integer  "customer_id",                   :null => false
@@ -50,5 +52,8 @@ ActiveRecord::Schema.define(:version => 20090211100649) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "timesheets", ["customer_id"], :name => "fk_timesheets_customer_id"
+  add_index "timesheets", ["authuser_id"], :name => "fk_timesheets_authuser_id"
 
 end
