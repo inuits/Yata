@@ -152,9 +152,26 @@ a:hover { color: #fff; background-color:#000; }
 .signature {
     border: 2px solid black;
     padding: 5px;
-    width: 45%;
 }
 .signature td {
+    border: 1px solid black;
+    height: 100px;
+}
+
+.signature th {
+    width: 250px;
+}
+
+.remarks {
+    border: 2px solid black;
+    padding: 5px;
+    width: 90%;
+}
+.remarks th {
+    width: 250px;
+}
+
+.remarks td {
     border: 1px solid black;
     height: 100px;
 }
