@@ -12,6 +12,6 @@ test:
 
 production:
   adapter: mysql
-  database: yata
+  database: inuits_yata
   username: yata
   host: 172.16.0.61
