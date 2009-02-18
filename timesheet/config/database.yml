@@ -1,6 +1,7 @@
 development:
   adapter: mysql
   database: dev_timesheet
+  username: yata
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -11,4 +12,6 @@ test:
 
 production:
   adapter: mysql
-  database: timesheet
+  database: yata
+  username: yata
+  host: 172.16.0.61
