@@ -6,6 +6,19 @@ class HoursController < ApplicationController
     @hour = Hour.find(params[:id])
   end
 
+  # DELETE /hours/1
+  # DELETE /hours/1.xml
+  def destroy
+    @hour = Hour.find(params[:id])
+    @timesheet = @hour.timesheet
+    @hour.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(@timesheet) }
+      format.xml  { head :ok }
+    end
+  end
+
   # PUT /hours/1
   # PUT /hours/1.xml
   def update

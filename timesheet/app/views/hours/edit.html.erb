@@ -18,6 +18,7 @@
 <p><%= f.error_messages %></p>
 
 <%= f.submit "Update" %>
+<%= link_to 'Destroy', @hour, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 
 

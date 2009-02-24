@@ -148,7 +148,7 @@
 	    <td><%= f.text_field :rate3, :size => 3, :tabindex => 5 %></td>
 	    <td><%= f.text_field :travel, :size => 3, :tabindex => 6 %></td>
 	  </tr>
-	  <% for hour in @timesheet.hours %>
+	  <% for hour in Hour.find(:all, :order => 'day', :conditions => ["timesheet_id=?", @timesheet]) %>
 	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
 	    <td width="5%"><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %></td>
 	    <td width="60%"><%=h hour.detail %></td>
