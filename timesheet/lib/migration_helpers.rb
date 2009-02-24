@@ -11,6 +11,6 @@ module MigrationHelpers
     constraint_name = "fk_#{from_table}_#{from_column}" 
 
     execute %{alter table #{from_table}
-              drop constraint #{constraint_name}}
+              drop foreign key #{constraint_name}}
   end
 end
