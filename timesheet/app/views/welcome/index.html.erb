@@ -3,7 +3,7 @@
 <tr><td><%= link_to 'Timesheets', timesheets_path %></td></tr>
 <% if current_authuser.id == 1 %>
 <tr><td><%= link_to 'Timesheets for ALL Consultants', all_timesheets_path %></td></tr>
-<% end %>
 <tr><td><%= link_to 'Customers', customers_path %></td></tr>
+<% end %>
 <tr><td><%= link_to 'Logout', "/logout" %></td></tr>
 </table>
