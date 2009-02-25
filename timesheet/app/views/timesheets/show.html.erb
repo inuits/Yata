@@ -9,119 +9,101 @@
 </tbody>
 </table>
 
-<TABLE FRAME=VOID CELLSPACING=0 COLS=10 RULES=NONE BORDER=0 WIDTH="100%">
-	<COLGROUP><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86></COLGROUP>
+<TABLE STYLE="border: 3px solid black" CELLSPACING=0 COLS=10 RULES=NONE  WIDTH="100%">
+	<COLGROUP><COL WIDTH=86><COL WIDTH=86><COL WIDTH=46><COL WIDTH=126><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86></COLGROUP>
 
 	<TBODY>
 		<TR>
-			<TD COLSPAN=4 STYLE="border-top: 3px solid #000000; border-left: 3px solid #000000" WIDTH=86 HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial" SIZE=4>  MONTHLY TIME REPORT</FONT></B></TD>
-			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-
-			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD STYLE="border-right: 3px solid #000000; border-top: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"></TD>
-			</TR>
-		<TR>
-			<TD STYLE="border-left: 3px solid #000000" HEIGHT=17 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=RIGHT BGCOLOR="#FFFFFF"><IMG SRC="/images/inuits.png" /><BR></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-
-			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-right: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"> </TD>
+			<TD COLSPAN=6 WIDTH=86 HEIGHT=23 ALIGN=LEFT><B><FONT FACE="Arial" SIZE=4>  MONTHLY TIME REPORT</FONT></B></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
 		</TR>
 		<TR>
-			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD ALIGN=CENTER><IMG SRC="/images/inuits.png" /></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
 		</TR>
 		<TR>
-
-			<TD STYLE="border-left: 3px solid #000000" HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><b><FONT FACE="Arial">Consultant:</b></FONT></b></TD>
+			<TD HEIGHT=16></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+		</TR>
+		<TR>
+			<TD></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><b><FONT FACE="Arial">Consultant:</FONT></b></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheet.authuser.fullname %></TD>
-			<TD><BR></TD>
-
-
+			<TD></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Month:</FONT></B></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= monthname(@timesheet.month) %></TD>
-
-
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD></TD>
+			<TD></TD>
 		</TR>
 		<TR>
 
-			<TD STYLE="border-left: 3px solid #000000" HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial"><b>Customer:</b></FONT></TD>
+			<TD></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><b><FONT FACE="Arial">Customer:</FONT></b></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial" SIZE=4><BR></FONT></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheet.customer.name %></TD>
-			<TD><BR></TD>
-
-
-
+			<TD></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Year:</FONT></B></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF" SDNUM="1033;0;0"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF" SDNUM="1033;0;0"></TD>
 			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= @timesheet.year %></TD>
-
-
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD></TD>
+			<TD></TD>
 		</TR>
 		<TR>
-			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT><BR></TD>
-			<TD ALIGN=LEFT><BR></TD>
-
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD ALIGN=LEFT></TD>
 		</TR>
 		<TR>
-			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD ALIGN=LEFT><BR></TD>
-			<TD ALIGN=LEFT><BR></TD>
-
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD HEIGHT=16></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
 		</TR>
 		<TR>
-			<TD STYLE="border-bottom: 3px solid #000000; border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
-			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
-			<TD STYLE="border-bottom: 3px solid #000000; border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD HEIGHT=16></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
+			<TD></TD>
 		</TR>
 	</TBODY>
 
