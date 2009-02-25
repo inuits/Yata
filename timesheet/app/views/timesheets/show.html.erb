@@ -125,10 +125,10 @@
 	  <tr id="new-task" bgcolor="yellow" style="display:none;">
 	    <td><%= f.text_field :day, :size => 3, :tabindex => 1 %></td>
 	    <td width="60%"><%= f.text_field :detail, :tabindex => 2 %><%= submit_tag 'Add', :tabindex => 7 %></td>
-	    <td><%= f.text_field :normal, :size => 3, :tabindex => 3 %></td>
-	    <td><%= f.text_field :rate2, :size => 3, :tabindex => 4 %></td>
-	    <td><%= f.text_field :rate3, :size => 3, :tabindex => 5 %></td>
-	    <td><%= f.text_field :travel, :size => 3, :tabindex => 6 %></td>
+	    <td><%= f.text_field :normal, :size => 4, :tabindex => 3 %></td>
+	    <td><%= f.text_field :rate2, :size => 4, :tabindex => 4 %></td>
+	    <td><%= f.text_field :rate3, :size => 4, :tabindex => 5 %></td>
+	    <td><%= f.text_field :travel, :size => 4, :tabindex => 6 %></td>
 	  </tr>
 	  <% for hour in Hour.find(:all, :order => 'day', :conditions => ["timesheet_id=?", @timesheet]) %>
 	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
