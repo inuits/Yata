@@ -9,106 +9,65 @@
 </tbody>
 </table>
 
-<TABLE STYLE="border: 3px solid black" CELLSPACING=0 COLS=10 RULES=NONE  WIDTH="100%">
-	<COLGROUP><COL WIDTH=86><COL WIDTH=86><COL WIDTH=46><COL WIDTH=126><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86></COLGROUP>
 
-	<TBODY>
-		<TR>
-			<TD COLSPAN=6 WIDTH=86 HEIGHT=23 ALIGN=LEFT><B><FONT FACE="Arial" SIZE=4>  MONTHLY TIME REPORT</FONT></B></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-		<TR>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD ALIGN=CENTER><IMG SRC="/images/inuits.png" /></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-		<TR>
-			<TD HEIGHT=16></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-		<TR>
-			<TD></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><b><FONT FACE="Arial">Consultant:</FONT></b></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheet.authuser.fullname %></TD>
-			<TD></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Month:</FONT></B></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= monthname(@timesheet.month) %></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-		<TR>
+<table style="border: 3px solid black;" cellspacing="0" cols="10" rules="none" width="100%">
+	<colgroup><col width="86"><col width="86"><col width="46"><col width="126"><col width="86"><col width="86"><col width="86"><col width="86"><col width="86"><col width="86"></colgroup>
 
-			<TD></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><b><FONT FACE="Arial">Customer:</FONT></b></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial" SIZE=4><BR></FONT></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheet.customer.name %></TD>
-			<TD></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Year:</FONT></B></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF" SDNUM="1033;0;0"></TD>
-			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= @timesheet.year %></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-		<TR>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD ALIGN=LEFT></TD>
-		</TR>
-		<TR>
-			<TD HEIGHT=16></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-		<TR>
-			<TD HEIGHT=16></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-			<TD></TD>
-		</TR>
-	</TBODY>
+	<tbody>
+		<tr>
+			<td colspan="6" align="left" height="23" width="86"><b><font face="Arial" size="4">  MONTHLY TIME REPORT</font></b></td>
+			<td colspan="4"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td align="center"><img src="/images/inuits.png"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td height="16" colspan="10"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan="2"><b><font face="Arial">Consultant:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.authuser.fullname %></td>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Month:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="right"><%= monthname(@timesheet.month) %></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
 
-</TABLE>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Customer:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.customer.name %></td>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Year:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="right"><%= @timesheet.year %></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td height="16" colspan="10"></td>
+		</tr>
+		<tr>
+			<td height="16" colspan="10"></td>
+		</tr>
+		<tr>
+			<td height="16" colspan="10"></td>
+		</tr>
+	</tbody>
+
+</table>
 <!-- ************************************************************************** -->
+
 
 <br/>
     <% remote_form_for( :hour, @hour, 
@@ -141,20 +100,16 @@
 	  </tr>
 	  <% end %>
 
-
-	</table>
-      
-	<table class="ts-total">
-	  <tr><th colspan=2 width="70%"><th width="30%" colspan=4></th></tr>
-	  
-	  <tr align="center">
-	    <td colspan=2 align="right">Total</td>
+	  <tr id="total">
+	    <td colspan=2 id="totaltask">Total</td>
 	    <td><%=h @timesheet.total_normal %></td>
 	    <td><%=h @timesheet.total_rate2 %></td>
 	    <td><%=h @timesheet.total_rate3 %></td>
 	    <td><%=h @timesheet.total_travel %></td>
 	  </tr>
+
 	</table>
+      
       
 
 <% end %>
