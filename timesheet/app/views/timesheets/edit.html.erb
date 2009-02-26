@@ -26,6 +26,10 @@
     <%= f.text_field :month, :size => 2 %>
   </p>
   <p>
+    <%= f.label :remarks %><br />
+    <%= f.text_area :remarks , :rows => 4, :cols => 90 %>
+  </p>
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>

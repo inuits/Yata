@@ -181,7 +181,7 @@ a:hover { color: #fff; background-color:#000; }
 .remarks {
     border: 2px solid black;
     padding: 5px;
-    width: 90%;
+    width: 30em;
 }
 .remarks th {
     width: 250px;
