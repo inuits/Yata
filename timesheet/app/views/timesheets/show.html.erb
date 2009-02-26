@@ -101,11 +101,18 @@
 	  <% end %>
 
 	  <tr id="total">
-	    <td colspan=2 id="totaltask">Total</td>
+	    <td colspan=2 id="totaltask">Total in hours</td>
 	    <td><%=h @timesheet.total_normal %></td>
 	    <td><%=h @timesheet.total_rate2 %></td>
 	    <td><%=h @timesheet.total_rate3 %></td>
 	    <td><%=h @timesheet.total_travel %></td>
+	  </tr>
+	  <tr id="total">
+	    <td colspan=2 id="totaltask">Total in days</td>
+	    <td><%= dhm(@timesheet.total_normal) %></td>
+	    <td><%=h dhm(@timesheet.total_rate2) %></td>
+	    <td><%=h dhm(@timesheet.total_rate3) %></td>
+	    <td><%=h dhm(@timesheet.total_travel) %></td>
 	  </tr>
 
 	</table>
