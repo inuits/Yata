@@ -102,15 +102,10 @@
 	    <td><%=h @timesheet.total_travel %></td>
 	  </tr>
 	  <tr id="total">
-	    <td colspan=2 id="totaltask">Computed total in days</td>
+	    <td colspan=2 id="totaltask">Total in 8h days</td>
 	    <td><%= dhm(@timesheet.total_normal) %></td>
-	    <td><%=h dhm(@timesheet.total_rate2*1.5) %></td>
-	    <td><%=h dhm(@timesheet.total_rate3*2) %></td>
-	    <td>-</td>
-	  </tr>
-	  <tr id="total">
-	    <td colspan=2 id="totaltask">Total</td>
-	    <td colspan="3"><%= dhm(@timesheet.total_normal+@timesheet.total_rate2*1.5+@timesheet.total_rate3*2) %> (<%= @timesheet.total_normal+@timesheet.total_rate2*1.5+@timesheet.total_rate3*2 %>)</td>
+	    <td><%=h dhm(@timesheet.total_rate2) %></td>
+	    <td><%=h dhm(@timesheet.total_rate3) %></td>
 	    <td><%=h @timesheet.total_travel %></td>
 	  </tr>
 
@@ -138,5 +133,7 @@
       <tr><th>Remarks</th><tr>
       <tr valign="top" align="left"><td><%= @timesheet.remarks %></td></tr>
     </table>
+</div>
 </td>
-<table>
+</tr>
+</table>
