@@ -15,3 +15,7 @@ body, p, ol, ul, td {
 a:link, a:visited {
     text-decoration: none;
 }
+
+#footer {
+    display:none;
+}
