@@ -137,11 +137,11 @@
 <%= calendar(:year => @year, :month => @month, :first_day_of_week => 1, :show_today => false) do |d|
 
 if d.nil?
-  cont = "<table class=\"code\">"
+  cont = "<div class='innercode'><table class=\"code\">"
   for timesheet in @timesheets
     cont += "<tr><td>"+ link_to(timesheet.customer.shortname, :controller => 'timesheets', :action => 'show', :id => timesheet) +"</td></tr>"
   end
-  cont += "<tr><td><b>TOTAL</b></td></tr></table>"
+  cont += "<tr><td><b>TOTAL</b></td></tr></table></div>"
   cont
 else
   if not @day[d.mday].nil?
@@ -150,13 +150,13 @@ else
     rate3= 0
     travel= 0
     
-    cont = "<table class=\"daygrid\" cellspacing=0>"
+    cont = "<div class='inner'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
     @day[d.mday].each do |customer|
 
       if customer.nil?
-        cont += "<tr><td id='normal'>0</td><td id='rate2'>0</td><td id='rate3'>0</td><td id='travel'>0</td></tr>"
+        cont += "<td id='normal'>0</td><td id='rate2'>0</td><td id='rate3'>0</td><td id='travel'>0</td></tr>"
       else
-        cont += "<tr><td id='normal'>"
+        cont += "<td id='normal'>"
         if not customer["normal"].nil?
           cont += "#{customer['normal']}"
           normal += customer["normal"]
@@ -188,10 +188,10 @@ else
       end
       
     end
-    cont += "<tr class=\"gridtotal\"><td id='normal'>#{normal}</td><td id='rate2'>#{rate2}</td><td id='rate3'>#{rate3}</td><td id='travel'>#{travel}</td></tr></table>"
+    cont += "<tr class=\"gridtotal\"><td id='normal'>#{normal}</td><td id='rate2'>#{rate2}</td><td id='rate3'>#{rate3}</td><td id='travel'>#{travel}</td></div></tr></table>"
   [cont, {}]
 else
-  [ "", {}]
+  [ "<div class='gday'>#{d.mday}</div><div class='inner'></div>", {}]
 end
 end
 end
