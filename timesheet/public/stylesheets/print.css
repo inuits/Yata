@@ -19,3 +19,7 @@ a:link, a:visited {
 #footer {
     display:none;
 }
+
+.ts-hours tr#total-days {
+    display: none;
+}

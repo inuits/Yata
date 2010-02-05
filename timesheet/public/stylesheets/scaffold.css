@@ -105,6 +105,14 @@ a:hover { color: #fff; background-color:#000; }
     white-space: nowrap;
 }
 
+.ts-hours tr#total-days {
+    color: black;
+    background-color: #aaaaff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
 .ts-hours td#totaltask {
     text-align: right;
     color: black;
