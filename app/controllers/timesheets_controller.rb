@@ -128,10 +128,17 @@ class TimesheetsController < ApplicationController
         if @day[hour.day][num].nil?
           @day[hour.day][num]= Hash.new 
         end
-        @day[hour.day][num]["normal"] = hour.normal unless hour.normal.nil?
-        @day[hour.day][num]["rate2"] = hour.rate2 unless hour.rate2.nil?
-        @day[hour.day][num]["rate3"] = hour.rate3 unless hour.rate3.nil?
-        @day[hour.day][num]["travel"] = hour.travel unless hour.travel.nil?
+        if @day[hour.day][num]["normal"].nil?
+          @day[hour.day][num]["normal"] = hour.normal unless hour.normal.nil?
+          @day[hour.day][num]["rate2"] = hour.rate2 unless hour.rate2.nil?
+          @day[hour.day][num]["rate3"] = hour.rate3 unless hour.rate3.nil?
+          @day[hour.day][num]["travel"] = hour.travel unless hour.travel.nil?
+        else
+          @day[hour.day][num]["normal"] += hour.normal unless hour.normal.nil?
+          @day[hour.day][num]["rate2"] += hour.rate2 unless hour.rate2.nil?
+          @day[hour.day][num]["rate3"] += hour.rate3 unless hour.rate3.nil?
+          @day[hour.day][num]["travel"] += hour.travel unless hour.travel.nil?
+        end
       end
     end
   end
