@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090224082339) do
+ActiveRecord::Schema.define(:version => 20090302110126) do
 
   create_table "authusers", :force => true do |t|
     t.string   "login"
@@ -25,19 +25,19 @@ ActiveRecord::Schema.define(:version => 20090224082339) do
 
   create_table "customers", :force => true do |t|
     t.string   "shortname",  :limit => 10
-    t.string   "name",                     :null => false
+    t.string   "name",                     :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "hours", :force => true do |t|
     t.integer  "timesheet_id"
-    t.integer  "day",          :null => false
+    t.integer  "day",                                        :null => false
     t.string   "detail"
-    t.integer  "normal"
-    t.integer  "travel"
-    t.integer  "rate2"
-    t.integer  "rate3"
+    t.decimal  "normal",       :precision => 4, :scale => 2
+    t.decimal  "travel",       :precision => 4, :scale => 2
+    t.decimal  "rate2",        :precision => 4, :scale => 2
+    t.decimal  "rate3",        :precision => 4, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(:version => 20090224082339) do
   add_index "hours", ["timesheet_id"], :name => "fk_hours_timesheet_id"
 
   create_table "timesheets", :force => true do |t|
-    t.integer  "authuser_id",                   :null => false
-    t.integer  "customer_id",                   :null => false
-    t.integer  "year",        :default => 2009, :null => false
-    t.integer  "month",       :default => 2,    :null => false
+    t.integer  "authuser_id",                                  :null => false
+    t.integer  "customer_id",                                  :null => false
+    t.integer  "year",                       :default => 2009, :null => false
+    t.integer  "month",                      :default => 2,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remarks",     :limit => 250
   end
 
   add_index "timesheets", ["customer_id"], :name => "fk_timesheets_customer_id"
