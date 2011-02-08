@@ -9,24 +9,23 @@
 
 <h1 style="text-align: center;">Listing timesheets for All Consultants</h1>
 
-<table style="height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+<h2 style="text-align: center;"><%= link_to '&lt;&lt;', all_timesheets_path(:year => @year-1) %>&nbsp;<%= @year %>&nbsp;<%= link_to '&gt;&gt;', all_timesheets_path(:year => @year+1) %></h2>
+<table style="width: 60%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
     <th>Consultant</th>
-    <th>Year</th>
     <th>Month</th>
     <th>Customer</th>
   </tr>
 
 <% currid=0 %>
 <% for timesheet in @timesheets %>
-  <tr>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
     <td>
 <% if currid != timesheet.authuser_id %>
     <% currid = timesheet.authuser_id %>
     <%=h timesheet.authuser.fullname %>
 <% end %>
     </td>
-    <td><%=h timesheet.year %></td>
     <td><%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => currid %></td>
     <td><%=h timesheet.customer.name %></td>
     <td><%= link_to 'Show', timesheet %></td>

@@ -5,7 +5,7 @@ class TimesheetsController < ApplicationController
   # GET /timesheets
   # GET /timesheets.xml
   def index
-    @timesheets = Timesheet.find_all_by_authuser_id(current_authuser, :order => "year, month")
+    @timesheets = Timesheet.find_all_by_authuser_id(current_authuser, :order => "year DESC, month DESC")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @timesheets }
@@ -15,7 +15,12 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/all
   # GET /timesheets/all.xml
   def all
-    @timesheets = Timesheet.find(:all, :order => "authuser_id, year, month")
+    if params[:year].nil?
+      @year= Time.now.year
+    else
+      @year= params[:year].to_i
+    end
+    @timesheets = Timesheet.find_all_by_year(@year, :order => "year, month desc, authuser_id")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @timesheets }

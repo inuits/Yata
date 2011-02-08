@@ -13,17 +13,29 @@
 
 <h1 style="text-align: center;">Listing timesheets for <%= current_authuser.fullname %></h1>
 
-<table style="height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+<table style="width: 60%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
     <th>Year</th>
     <th>Month</th>
     <th>Customer</th>
   </tr>
 
+<% year=0 %>
+<% month=0 %>
 <% for timesheet in @timesheets %>
-  <tr>
-    <td><%=h timesheet.year %></td>
-    <td><%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
+    <td>
+      <% if year != timesheet.year %>
+           <% year= timesheet.year %>
+           <%=h timesheet.year %>
+      <% end %>
+    </td>
+    <td>
+      <% if month != timesheet.month %>
+           <% month=timesheet.month %>
+          <%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
+      <% end %>
+    </td>
     <td><%=h timesheet.customer.name %></td>
     <td><%= link_to 'Show', timesheet %></td>
     <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
