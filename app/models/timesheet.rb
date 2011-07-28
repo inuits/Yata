@@ -1,6 +1,7 @@
 class Timesheet < ActiveRecord::Base
   belongs_to :authuser
   belongs_to :customer
+  belongs_to :project
   has_many :hours
 
   def total_normal
