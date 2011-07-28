@@ -18,6 +18,7 @@
     <th>Year</th>
     <th>Month</th>
     <th>Customer</th>
+    <th>Project</th>
   </tr>
 
 <% year=0 %>
@@ -37,6 +38,7 @@
       <% end %>
     </td>
     <td><%=h timesheet.customer.name %></td>
+    <td><% if not timesheet.project.nil? %><%=h timesheet.project.name %><% end %></td>
     <td><%= link_to 'Show', timesheet %></td>
     <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
