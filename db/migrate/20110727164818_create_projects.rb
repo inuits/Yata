@@ -8,7 +8,7 @@ class CreateProjects < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_column :timesheets, :project, :integer, :null => false
+    add_column :timesheets, :project, :integer, :null => true
   end
 
   def self.down
