@@ -3,6 +3,7 @@
 <% form_for(@timesheet) do |f| %>
   <%= f.error_messages %>
 
+  <p>
     <%= f.label :customer_id %><br />
     <%= f.select :customer_id, Customer.find(:all).collect {|u| [ u.name, u.id ] } %>
   </p>
