@@ -139,7 +139,11 @@
 if d.nil?
   cont = "<div class='innercode'><table class=\"code\">"
   for timesheet in @timesheets
-    cont += "<tr><td>"+ link_to(timesheet.customer.shortname, :controller => 'timesheets', :action => 'show', :id => timesheet) +"</td></tr>"
+    if not timesheet.project.nil?
+      cont += "<tr><td>"+ link_to(timesheet.customer.shortname + " - " + timesheet.project.shortname, :controller => 'timesheets', :action => 'show', :id => timesheet) +"</td></tr>"
+    else
+      cont += "<tr><td>"+ link_to(timesheet.customer.shortname, :controller => 'timesheets', :action => 'show', :id => timesheet) +"</td></tr>"
+    end
   end
   cont += "<tr><td><b>TOTAL</b></td></tr></table></div>"
   cont
