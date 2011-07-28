@@ -47,6 +47,7 @@ class TimesheetsController < ApplicationController
     @timesheet = Timesheet.new
     @timesheet.month = Time.now.mon
     @timesheet.year = Time.now.year
+    @projects = Project.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,9 +55,19 @@ class TimesheetsController < ApplicationController
     end
   end
 
+  # POST /timesheets/update_project_div
+  def update_project_div
+    @projects = Project.find(:all, :conditions => ["customer_id = ?", params[:timesheet_customer_id]])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   # GET /timesheets/1/edit
   def edit
     @timesheet = Timesheet.find(params[:id])
+    @projects = Project.find(:all, :conditions => ["customer_id = ?", @timesheet.customer_id])
   end
 
 
