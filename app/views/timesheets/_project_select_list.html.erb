@@ -1,0 +1,4 @@
+    <p>
+      <%= label :timesheet, :project_id %><br />
+      <%= collection_select :timesheet, :project_id, @projects, :id, :name, :include_blank => 'No project' %>
+    </p>
