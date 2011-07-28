@@ -1,0 +1,21 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome' %></td>
+<td><%= link_to 'Projects', projects_path %></td>
+<td><%= link_to 'Edit', edit_project_path(@project) %></td>
+</tr>
+</tbody>
+</table>
+
+ <p>
+<table align="center" cellspacing=2>
+<tr bgcolor="black"><th><font color="white">Shortname</font></th><th><font color="white">Project name</font></th><th><font color="white">Customer</font></th></tr>
+<tr>
+  <td><%=h @project.shortname %></td>
+  <td><%=h @project.name %></td>
+  <td><%=h @project.customer.name %></td>
+</tr>
+</table>
+
+

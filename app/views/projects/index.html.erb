@@ -1,0 +1,33 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New project', new_project_path %></td>
+</tr>
+</tbody>
+</table>
+
+<h1 style="text-align: center;">Listing projects</h1>
+
+<table style="height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>Shortname</th>
+    <th>Name</th>
+    <th>Customer</th>
+  </tr>
+
+<% for project in @projects %>
+  <tr>
+    <td><%=h project.shortname %></td>
+    <td><%=h project.name %></td>
+    <td><%=h project.customer.name %></td>
+    <td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
