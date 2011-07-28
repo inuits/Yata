@@ -40,11 +40,10 @@
 			<td></td>
 			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Month:</font></b></td>
 			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="right"><%= monthname(@timesheet.month) %></td>
-			<td></td>
+      <td></td>
 			<td></td>
 		</tr>
 		<tr>
-
 			<td></td>
 			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Customer:</font></b></td>
 			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.customer.name %></td>
@@ -54,6 +53,15 @@
 			<td></td>
 			<td></td>
 		</tr>
+    <% if not @timesheet.project.nil? %>
+		<tr>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Project:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.project.name %></td>
+			<td></td>
+			<td></td>
+		</tr>
+    <% end %>
 		<tr>
 			<td height="20" colspan="10"></td>
 		</tr>
