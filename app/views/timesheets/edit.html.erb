@@ -15,7 +15,7 @@
 
   <p>
     <%= f.label :customer_id %><br />
-    <%= f.select :customer_id, Customer.find(:all).collect {|u| [ u.name, u.id ] } %>
+    <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
     <%= observe_field :timesheet_customer_id, :url => {:action => :update_project_div},  :with => :timesheet_customer_id %>
   </p>
   <div id="project_div">

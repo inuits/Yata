@@ -13,7 +13,7 @@
   </p>
   <p>
     <%= f.label :customer_id %><br />
-    <%= f.select :customer_id, Customer.find(:all).collect {|u| [ u.name, u.id ] } %>
+    <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
   </p>
   <p>
     <%= f.submit "Create" %>
