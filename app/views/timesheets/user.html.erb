@@ -158,30 +158,30 @@ else
     @day[d.mday].each do |customer|
 
       if customer.nil?
-        cont += "<td id='normal'>0</td><td id='rate2'>0</td><td id='rate3'>0</td><td id='travel'>0</td></tr>"
+        cont += "<td class='normal'>0</td><td class='rate2'>0</td><td class='rate3'>0</td><td class='travel'>0</td></tr>"
       else
-        cont += "<td id='normal'>"
+        cont += "<td class='normal'>"
         if not customer["normal"].nil?
           cont += "#{customer['normal']}"
           normal += customer["normal"]
         else
           cont += "0"
         end
-        cont += "</td><td id='rate2'>"
+        cont += "</td><td class='rate2'>"
         if not customer["rate2"].nil?
           cont += "#{customer['rate2']}"
           rate2 += customer["rate2"]
         else
           cont += "0"
         end
-        cont += "</td><td id='rate3'>"
+        cont += "</td><td class='rate3'>"
         if not customer["rate3"].nil?
           cont += "#{customer['rate3']}"
           rate3 += customer["rate3"]
         else
           cont += "0"
         end
-        cont += "</td><td id='travel'>"
+        cont += "</td><td class='travel'>"
         if not customer["travel"].nil?
           cont += "#{customer['travel']}"
           travel += customer["travel"]
@@ -192,7 +192,7 @@ else
       end
       
     end
-    cont += "<tr class=\"gridtotal\"><td id='normal'>#{normal}</td><td id='rate2'>#{rate2}</td><td id='rate3'>#{rate3}</td><td id='travel'>#{travel}</td></div></tr></table>"
+    cont += "<tr class=\"gridtotal\"><td class='normal'>#{normal}</td><td class='rate2'>#{rate2}</td><td class='rate3'>#{rate3}</td><td class='travel'>#{travel}</td></div></tr></table>"
   [cont, {}]
 else
   [ "<div class='gday'>#{d.mday}</div><div class='inner'></div>", {}]
@@ -204,9 +204,9 @@ end
 <p>
 <table class="daygrid" width="100%">
 <tr bgcolor='#aaaaaa' style='text-align:center;'>
-  <td id='normal'>Normal</td>
-  <td id='rate2'>150%</td>
-  <td id='rate3'>200%</td>
-  <td id='travel'>Travel</td>
+  <td class='normal'>Normal</td>
+  <td class='rate2'>150%</td>
+  <td class='rate3'>200%</td>
+  <td class='travel'>Travel</td>
 </tr>
 </table>
