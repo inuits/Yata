@@ -11,7 +11,7 @@
 
 
 
-<h1 style="text-align: center;">Listing timesheets for <%= current_authuser.fullname %></h1>
+<h1 style="text-align: center;">Statistics for <%= current_authuser.fullname %></h1>
 
 <table class="stats" style="width: 80%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
@@ -19,7 +19,8 @@
     <th>Month</th>
     <th>Customer</th>
     <th>Project</th>
-    <th style="text-align:center;" colspan="4">Time</th>
+    <th class="center" colspan="4">Time</th>
+    <th>Total</th>
   </tr>
 
 <% year=0 %>
@@ -44,6 +45,7 @@
     <td class="rate2"><%= dhm(timesheet.total_rate2) %></td>
     <td class="rate3"><%= dhm(timesheet.total_rate3) %></td>
     <td class="travel"><%= dhm(timesheet.total_travel) %></td>
+    <td><%= dhm_2(timesheet.total_normal+timesheet.total_rate2+timesheet.total_rate3+timesheet.total_travel) %></td>
     <td><%= link_to 'Show', timesheet %></td>
   </tr>
 <% end %>

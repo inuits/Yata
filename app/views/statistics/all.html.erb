@@ -17,6 +17,7 @@
     <th>Customer <%= link_to '&darr;', :sort => "3" %> <%= link_to '&uarr;', :sort => "13" %></th>
     <th>Project</th>
     <th colspan="4" class="center">Time</th>
+    <th>Total</th>
     <th></th>
   </tr>
 
@@ -45,6 +46,7 @@
     <td class="rate2"><%= dhm(timesheet.total_rate2) %></td>
     <td class="rate3"><%= dhm(timesheet.total_rate3) %></td>
     <td class="travel"><%= dhm(timesheet.total_travel) %></td>
+    <td><%= dhm_2(timesheet.total_normal+timesheet.total_rate2+timesheet.total_rate3+timesheet.total_travel) %></td>
     <td><%= link_to 'Show', timesheet %></td>
   </tr>
 <% if curcust != timesheet.customer_id %>
