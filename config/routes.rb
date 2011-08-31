@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :hours
 
   map.resources :timesheets, :collection => { :all => :get, :user => :get }
+
+  map.resources :statistics, :collection => { :all => :get, :user => :get }
   #map.resources :timesheets
 
   map.resources :customers
@@ -14,7 +16,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   
-  map.resources :statistics
 
   # The priority is based upon order of creation: first created -> highest priority.
 
