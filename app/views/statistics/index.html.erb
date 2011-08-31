@@ -1,0 +1,61 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New timesheet', new_timesheet_path %></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+<h1 style="text-align: center;">Listing timesheets for <%= current_authuser.fullname %></h1>
+
+<table class="stats" style="width: 80%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Customer</th>
+    <th>Project</th>
+    <th style="text-align:center;" colspan="4">Time</th>
+  </tr>
+
+<% year=0 %>
+<% month=0 %>
+<% for timesheet in @timesheets %>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
+    <td>
+      <% if year != timesheet.year %>
+           <% year= timesheet.year %>
+           <%=h timesheet.year %>
+      <% end %>
+    </td>
+    <td>
+      <% if month != timesheet.month %>
+           <% month=timesheet.month %>
+          <%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
+      <% end %>
+    </td>
+    <td><%=h timesheet.customer.name %></td>
+    <td><% if not timesheet.project.nil? %><%=h timesheet.project.name %><% end %></td>
+    <td class="normal"><%= dhm(timesheet.total_normal) %></td>
+    <td class="rate2"><%= dhm(timesheet.total_rate2) %></td>
+    <td class="rate3"><%= dhm(timesheet.total_rate3) %></td>
+    <td class="travel"><%= dhm(timesheet.total_travel) %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<table class="daygrid" width="100%">
+<tr bgcolor='#aaaaaa' style='text-align:center;'>
+  <td class='normal'>Normal</td>
+  <td class='rate2'>150%</td>
+  <td class='rate3'>200%</td>
+  <td class='travel'>Travel</td>
+</tr>
+</table>
