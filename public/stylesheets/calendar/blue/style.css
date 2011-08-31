@@ -84,20 +84,36 @@
     color: blue;
 }
 
-.daygrid td#normal {
+.daygrid td.normal, .stats td.normal {
     color: #ff00ff;
 }
 
-.daygrid td#rate2 {
+.daygrid td.rate2, .stats td.rate2 {
     color: green;
 }
 
-.daygrid td#rate3 {
+.daygrid td.rate3, .stats td.rate3 {
     color: blue;
 }
 
-.daygrid td#travel {
+.daygrid td.travel, .stats td.travel {
     color: #333333;
+}
+
+.stats td.normal, .stats td.rate2, .stats td.rate3, .stats td.travel, .stats th.center {
+    text-align:center;
+}
+
+.stats td.repeat {
+    color:rgb(150,150,150);
+}
+
+.stats th a {
+    text-decoration: none;
+}
+
+.stats tr.topline td {
+    border-top: rgb(100,100,100) solid 1px;
 }
 
 .innercode {
