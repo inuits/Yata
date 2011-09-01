@@ -36,7 +36,7 @@
     <td>
       <% if month != timesheet.month %>
            <% month=timesheet.month %>
-          <%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
+          <%= link_to monthname(timesheet.month), :controller => 'timesheets',  :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => current_authuser.id %></td>
       <% end %>
     </td>
     <td><%=h timesheet.customer.name %></td>
