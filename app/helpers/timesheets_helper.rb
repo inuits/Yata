@@ -8,7 +8,7 @@ module TimesheetsHelper
     Date::MONTHNAMES[num]
   end
 
-  def dhm(hours)
+  def dhm_ts(hours)
     (hours/8).to_i.to_s + "d " + (hours%8).to_i.to_s.rjust(2, '0') + ":" + ((hours*60)%60).to_i.to_s.rjust(2, '0') 
   end
 

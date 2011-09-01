@@ -111,9 +111,9 @@
 	  </tr>
 	  <tr id="total-days">
 	    <td colspan=2 id="totaltask">Total in 8h days</td>
-	    <td><%= dhm(@timesheet.total_normal) %></td>
-	    <td><%=h dhm(@timesheet.total_rate2) %></td>
-	    <td><%=h dhm(@timesheet.total_rate3) %></td>
+	    <td><%= dhm_ts(@timesheet.total_normal) %></td>
+	    <td><%=h dhm_ts(@timesheet.total_rate2) %></td>
+	    <td><%=h dhm_ts(@timesheet.total_rate3) %></td>
 	    <td><%=h @timesheet.total_travel %></td>
 	  </tr>
 
