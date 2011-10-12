@@ -7,8 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :timesheets, :collection => { :all => :get, :user => :get }
 
-  map.resources :statistics, :collection => { :all => :get, :user => :get }
-  #map.resources :timesheets
+  map.resources :statistics, :collection => { :all => :get, :user => :get, :exports => :get }
 
   map.resources :customers
 
