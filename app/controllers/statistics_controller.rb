@@ -22,7 +22,34 @@ class StatisticsController < ApplicationController
     else
       @year= params[:year].to_i
     end
-    @timesheets = Timesheet.find_all_by_year(@year)
+    
+    conditions_text = "year = #{@year}"
+    
+    if not params[:month].nil? and params[:month].to_i != -1
+      conditions_text += " AND month = #{params[:month].to_i}"
+      @month= params[:month].to_i
+    else
+      @month= -1
+    end
+    if not params[:customer_id].nil? and params[:customer_id].to_i != -1
+      conditions_text += " AND customer_id = #{params[:customer_id].to_i}"
+      @customer_id= params[:customer_id].to_i
+      @projects = Project.find(:all, :conditions => ["customer_id = ?", params[:customer_id]])
+    else
+      @customer_id= -1
+    end
+    if not params[:project_id].nil? and params[:project_id].to_i > 0
+      conditions_text += " AND project_id = #{params[:project_id].to_i}"
+      @project_id= params[:project_id].to_i
+    elsif not params[:project_id].nil? and params[:project_id].to_i == -2
+      conditions_text += " AND project_id is null"
+      @project_id= -2
+    else
+      @project_id= -1
+    end
+    
+    @timesheets = Timesheet.find(:all, :conditions => conditions_text)
+    
     if params[:sort].nil?
       @sort = '2'
     else
