@@ -3,13 +3,10 @@
 <tr>
 <td><%= link_to 'Menu', :controller => 'welcome'  %></td>
 <td><%= link_to 'New timesheet', new_timesheet_path %></td>
+<td><%= link_to 'Exports', exports_statistics_path %></td>
 </tr>
 </tbody>
 </table>
-
-
-
-
 
 <h1 style="text-align: center;">Statistics for <%= current_authuser.fullname %></h1>
 

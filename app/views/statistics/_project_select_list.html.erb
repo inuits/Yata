@@ -1,0 +1,4 @@
+    <p>
+      <%= label :export, :project_id %><br />
+      <%= select_tag :project_id, options_for_select([[ 'All project', -1 ], ['No project', -2]] | @projects.collect {|u| [ u.name, u.id ] }) %>
+    </p>

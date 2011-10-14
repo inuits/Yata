@@ -1,6 +1,7 @@
 class StatisticsController < ApplicationController
   before_filter :login_required
   protect_from_forgery :except => :show
+  require 'fastercsv'
 
   # GET /statistics
   # GET /statistics.xml
@@ -44,6 +45,66 @@ class StatisticsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @timesheets }
     end
+  end
+
+  # GET /statistics/exports
+  # GET /statistics/exports.xml
+  def exports
+    @projects = Project.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @timesheets }
+    end
+  end
+
+  # POST /timesheets/update_project_div
+  def update_project_div
+    @projects = Project.find(:all, :conditions => ["customer_id = ?", params[:customer_id]])
+    respond_to do |format|
+      format.html
+      format.js
+    end 
+  end 
+
+  def generate_csv
+    if params[:year].nil?
+      @year= Time.now.year
+    else
+      @year= params[:year].to_i
+    end
+    filename = "yata_#{@year}"
+    conditions_text = "year = #{@year}"
+    
+    if not params[:month].nil? and params[:month].to_i != -1
+      conditions_text += " AND month = #{params[:month].to_i}"
+      filename += "_#{params[:month].to_i}" 
+    end
+    if not params[:customer_id].nil? and params[:customer_id].to_i != -1
+      conditions_text += " AND customer_id = #{params[:customer_id].to_i}"
+      filename += "_customer#{params[:customer_id]}"
+    end
+    if not params[:project_id].nil? and params[:project_id].to_i > 0
+      conditions_text += " AND project_id = #{params[:project_id].to_i}"
+      filename += "_project#{params[:project_id]}"
+    elsif not params[:project_id].nil? and params[:project_id].to_i == -2
+      conditions_text += " AND project_id is null"
+      filename += "_noproject"
+    end
+    csv_data = FasterCSV.generate do |csv|
+    csv << ['Id','Consultant','Customer', 'Project', 'Year', 'Month', '100%', '150%', '200%', 'travel']
+      @timesheets = Timesheet.find(:all, :conditions => conditions_text)
+      @timesheets.each do |t|
+        if t.project.nil?
+          project_name = "No project"
+        else
+          project_name = t.project.name
+        end
+        csv << [t.id, t.authuser.fullname, t.customer.name, project_name, t.year, t.month, t.total_normal, t.total_rate2, t.total_rate3, t.total_travel]
+      end
+    end
+    send_data csv_data,
+      :type => 'text/csv; charset=iso-8859-1; header=present',
+      :disposition => "attachment; filename=" + filename + ".csv"
   end
 
 end
