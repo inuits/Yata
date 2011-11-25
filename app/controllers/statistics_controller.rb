@@ -19,6 +19,14 @@ class StatisticsController < ApplicationController
   def all
     if params[:year].nil?
       @year= Time.now.year
+      @customer_id= -1
+      @project_id= -1
+      @month= -1
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml }
+      end
+      return
     else
       @year= params[:year].to_i
     end

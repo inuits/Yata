@@ -51,6 +51,9 @@
   </tr>
 </table>
 <% end -%>
+<% if @timesheets.nil? %>
+<p>Nothing to display</p>
+<% else%>
 <table class="stats" style="width: 80%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
     <th>Consultant <%= link_to '&darr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "1" %> <%= link_to '&uarr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "11" %></th>
@@ -92,6 +95,7 @@
 <% end %>
 <% if curmonth != timesheet.month %>
     <% curmonth = timesheet.month %>
+<% end %>
 <% end %>
 <% end %>
 </table>
