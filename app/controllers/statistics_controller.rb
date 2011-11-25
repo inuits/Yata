@@ -126,20 +126,34 @@ class StatisticsController < ApplicationController
       filename += "_noproject"
     end
     csv_data = FasterCSV.generate do |csv|
-    csv << ['Id','Consultant','Customer', 'Project', 'Year', 'Month', '100%', '150%', '200%', 'travel']
-      @timesheets = Timesheet.find(:all, :conditions => conditions_text)
-      @timesheets.each do |t|
-        if t.project.nil?
-          project_name = "No project"
-        else
-          project_name = t.project.name
+      if params[:summary_per_month].nil? or params[:summary_per_month].to_i != 1
+        csv << ['Id','Consultant','Customer', 'Project', 'Year', 'Month', '100%', '150%', '200%', 'travel']
+        @timesheets = Timesheet.find(:all, :conditions => conditions_text)
+        @timesheets.each do |t|
+          if t.project.nil?
+            project_name = "No project"
+          else
+            project_name = t.project.name
+          end
+          csv << [t.id, t.authuser.fullname, t.customer.name, project_name, t.year, t.month, t.total_normal, t.total_rate2, t.total_rate3, t.total_travel]
         end
-        csv << [t.id, t.authuser.fullname, t.customer.name, project_name, t.year, t.month, t.total_normal, t.total_rate2, t.total_rate3, t.total_travel]
+      else
+        @datas = {}
+        @timesheets = Timesheet.find(:all, :conditions => conditions_text)
+        @timesheets.each do |t|
+          if @datas[t.authuser.fullname].nil?
+            @datas[t.authuser.fullname] = Array.new(12,0)
+          end
+          @datas[t.authuser.fullname][t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
+        end
+        @datas.each do | x, y |
+          csv << [ x ] + y
+        end
       end
     end
-    send_data csv_data,
-      :type => 'text/csv; charset=iso-8859-1; header=present',
-      :disposition => "attachment; filename=" + filename + ".csv"
+      send_data csv_data,
+        :type => 'text/csv; charset=iso-8859-1; header=present',
+        :disposition => "attachment; filename=" + filename + ".csv"
   end
 
 end

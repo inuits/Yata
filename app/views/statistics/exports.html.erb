@@ -25,6 +25,10 @@
     <%= text_field_tag :year, Time.now.year, :maxlength => 4 %>
   </p>
   <p>
+    <%= label_tag :summary_per_month %><br />
+    <%= check_box_tag :summary_per_month %>
+  </p>
+  <p>
      <%= submit_tag "Export" %>
   </p>
 <% end -%>
