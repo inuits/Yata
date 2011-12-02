@@ -1,4 +1,7 @@
 class Timesheet < ActiveRecord::Base
+  validates_numericality_of :year, :only_integer => false, :greater_than_or_equal_to => 2007, :allow_blank => false
+  validates_presence_of :customer_id
+
   belongs_to :authuser
   belongs_to :customer
   belongs_to :project
