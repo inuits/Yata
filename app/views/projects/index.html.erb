@@ -14,13 +14,19 @@
     <th>Shortname</th>
     <th>Name</th>
     <th>Customer</th>
+    <th>Project type</th>
+    <th>Days/date</th>
+    <th>Cost</th>
   </tr>
 
 <% for project in @projects %>
-  <tr>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
     <td><%=h project.shortname %></td>
     <td><%=h project.name %></td>
     <td><%=h project.customer.name %></td>
+    <td><% if project.fixed_project %>Mission<% else %>Consultancy<% end %></td>
+    <td><% if project.fixed_project %><% if project.days %><%=h project.days %> days<% end %><% else %><%=h project.end_date %><% end %></td>
+    <td><%=h project.cost_per_day %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>

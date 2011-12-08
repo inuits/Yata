@@ -15,6 +15,21 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
+    @timesheets = Timesheet.find_all_by_project_id(@project.id)
+  
+    @total_time = 0
+    @datas = {}
+    @sum = Array.new(12,0.0)
+
+    @timesheets.each do |t|
+      @total_time += t.total_normal + 1.5*t.total_rate2 + 2*t.total_rate3
+      if @datas[t.authuser.fullname].nil?
+        @datas[t.authuser.fullname] = Array.new(12,0.0)
+      end
+      @datas[t.authuser.fullname][t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
+      @sum[t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }

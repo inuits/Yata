@@ -10,12 +10,68 @@
 
  <p>
 <table align="center" cellspacing=2>
-<tr bgcolor="black"><th><font color="white">Shortname</font></th><th><font color="white">Project name</font></th><th><font color="white">Customer</font></th></tr>
+<tr bgcolor="black">
+  <th><font color="white">Shortname</font></th>
+  <th><font color="white">Project name</font></th>
+  <th><font color="white">Customer</font></th>
+  <th><font color="white">Project type</font></th>
+  <th><font color="white">Days/date</font></th>
+  <th><font color="white">Cost</font></th>
+</tr>
 <tr>
   <td><%=h @project.shortname %></td>
   <td><%=h @project.name %></td>
   <td><%=h @project.customer.name %></td>
+  <td><% if @project.fixed_project %>Mission<% else %>Consultancy<% end %></td>
+  <td><% if @project.fixed_project %><%=h @project.days %> days<% else %><%=h @project.end_date %><% end %></td>
+  <td><%=h @project.cost_per_day %></td>
 </tr>
 </table>
-
+<% if not @project.fixed_project %>
+<h2>Details</h2>
+<table class="ts-hours">
+  <tr class="table-header">
+    <th class="consname">Consultant</th>
+    <th>Jan</th>
+    <th>Feb</th>
+    <th>Mar</th>
+    <th>Apr</th>
+    <th>May</th>
+    <th>Jun</th>
+    <th>Jul</th>
+    <th>Aug</th>
+    <th>Sep</th>
+    <th>Oct</th>
+    <th>Nov</th>
+    <th>Dec</th>
+  </tr>
+<% for data in @datas %>
+  <tr class="task-line-<%= cycle("odd","even") %>">
+    <td class="consname"><%=h data[0] %></td>
+    <td><%=h data[1][0] %></td>
+    <td><%=h data[1][1] %></td>
+    <td><%=h data[1][2] %></td>
+    <td><%=h data[1][3] %></td>
+    <td><%=h data[1][4] %></td>
+    <td><%=h data[1][5] %></td>
+    <td><%=h data[1][6] %></td>
+    <td><%=h data[1][7] %></td>
+    <td><%=h data[1][8] %></td>
+    <td><%=h data[1][9] %></td>
+    <td><%=h data[1][10] %></td>
+    <td><%=h data[1][11] %></td>
+  </tr>
+<% end %>
+  <tr id="total">
+    <td class="consname">Total</td>
+    <% @sum.each do |s| %>
+    <td><%=h s %><% if not @project.cost_per_day.nil? %><br /><%=h @project.cost_per_day*s/8 %> €<% end %></td>
+    <% end %>
+  </tr>
+</table>
+<p>Spent time on this project: <%=h @total_time %> hours (<%=h @total_time/8 %> days)</p>
+<% if not @project.cost_per_day.nil? %>
+  <p>Total cost is <%=h @total_time/8 %>d * <%=h @project.cost_per_day %>€/d = <strong><%=h @total_time*@project.cost_per_day/8 %>€</strong></p>
+  <% end %>
+<% end %>
 
