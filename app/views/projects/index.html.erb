@@ -16,6 +16,8 @@
     <th>Customer</th>
     <th>Billable</th>
     <th>Type</th>
+    <th>Price</th>
+    <th>End/Duration</th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,6 +30,8 @@
     <td><%=h project.customer.name %></td>
     <td><% if project.billable %>Yes<% else %>No<% end%></td>
     <td><% if project.billable %><% if project.fixed_price %>Fixed price<% else %>Consultancy<% end %><% else %>N/A<% end %></td>
+    <td><% if project.billable %><% if project.fixed_price %><%= project.total_price %><% else %><%= project.price_per_day %> per day<% end %><% else %>N/A<% end %></td>
+    <td><% if project.billable %><% if project.fixed_price %><%= project.days %> days<% else %><%= project.end_date%><% end %><% else %>N/A<% end %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
