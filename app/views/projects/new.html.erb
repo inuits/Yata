@@ -14,6 +14,14 @@
   <p>
     <%= f.label :customer_id %><br />
     <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
+    </p>
+   <p>
+    <%= f.label :billable %><br />
+    <%= f.check_box :billable %>
+  </p>
+   <p>
+    <%= f.label :fixed_price %><br />
+    <%= f.check_box :fixed_price %>
   </p>
   <p>
     <%= f.submit "Create" %>

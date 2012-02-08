@@ -10,11 +10,19 @@
 
  <p>
 <table align="center" cellspacing=2>
-<tr bgcolor="black"><th><font color="white">Shortname</font></th><th><font color="white">Project name</font></th><th><font color="white">Customer</font></th></tr>
+  <tr bgcolor="black">
+    <th><font color="white">Shortname</font></th>
+    <th><font color="white">Project name</font></th>
+    <th><font color="white">Customer</font></th>
+    <th><font color="white">Billable</font></th>
+    <th><font color="white">Fixed price</font></th>
+  </tr>
 <tr>
   <td><%=h @project.shortname %></td>
   <td><%=h @project.name %></td>
   <td><%=h @project.customer.name %></td>
+  <td><% if @project.billable %>Yes<% else %>No<% end%></td>
+  <td><% if @project.billable %><% if @project.fixed_price %>Fixed price<% else %>Consultancy<% end %><% else %>N/A<% end %></td>
 </tr>
 </table>
 

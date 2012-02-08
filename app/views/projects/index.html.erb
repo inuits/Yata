@@ -9,18 +9,25 @@
 
 <h1 style="text-align: center;">Listing projects</h1>
 
-<table style="height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+<table style="border: 1px grey solid; border-radius: 0.5em; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
   <tr>
     <th>Shortname</th>
     <th>Name</th>
     <th>Customer</th>
+    <th>Billable</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% for project in @projects %>
-  <tr>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
     <td><%=h project.shortname %></td>
     <td><%=h project.name %></td>
     <td><%=h project.customer.name %></td>
+    <td><% if project.billable %>Yes<% else %>No<% end%></td>
+    <td><% if project.billable %><% if project.fixed_price %>Fixed price<% else %>Consultancy<% end %><% else %>N/A<% end %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
