@@ -14,7 +14,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
-    @timesheets = Timesheet.find_all_by_project_id(@project.id)
+    if params[:year].nil?
+      @year= Time.now.year
+    else
+      @year= params[:year].to_i
+    end
+    @timesheets = Timesheet.find_all_by_project_id(@project.id, :conditions => ["year = ?", @year])
+
+
 
     @total_time = 0
     @datas = {}
