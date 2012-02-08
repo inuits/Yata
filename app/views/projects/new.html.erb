@@ -16,26 +16,6 @@
     <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
   </p>
   <p>
-    <%= f.label :fixed_project %><br />
-    <%= f.check_box :fixed_project %>
-  </p>
-  <p>
-    <%= f.label :end_date %><br />
-    <%= f.text_field :end_date %>
-  </p>
-  <p>
-    <%= f.label :days %><br />
-    <%= f.text_field :days %>
-  </p>
-  <p>
-    <%= f.label :cost_per_day %><br />
-    <%= f.text_field :cost_per_day %>
-  </p>
-  <p>
-    <%= f.label :total_cost %><br />
-    <%= f.text_field :total_cost %>
-  </p>
-  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
