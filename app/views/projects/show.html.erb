@@ -26,7 +26,7 @@
   <td><% if @project.billable %>Yes<% else %>No<% end%></td>
   <td><% if @project.billable %><% if @project.fixed_price %>Fixed price<% else %>Consultancy<% end %><% else %>N/A<% end %></td>
   <td><% if @project.billable %><% if @project.fixed_price %><%= @project.total_price %><% else %><%= @project.price_per_day %> per day<% end %><% else %>N/A<% end %></td>
-  <td><% if @project.billable %><% if @project.fixed_price %><%= @project.days %> days<% else %><%= @project.end_date%><% end %><% else %>N/A<% end %></td>
+  <td><% if @project.billable %><% if @project.fixed_price %><%= @project.duration %> days<% else %><%= @project.end_date%><% end %><% else %>N/A<% end %></td>
 </tr>
 </table>
 <h2>Details</h2>
