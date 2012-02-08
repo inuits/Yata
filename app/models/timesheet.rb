@@ -1,5 +1,5 @@
 class Timesheet < ActiveRecord::Base
-  validates_presence_of :project_in_a_new_timesheet, :message => "can't be blank. Sickness/holidays projects can be found under the inuits project."
+  validates_presence_of :project_in_a_new_timesheet, :message => "can't be blank. Sickness/holidays projects can be found under the inuits customer."
   validates_numericality_of :year, :only_integer => false, :greater_than_or_equal_to => 2007, :allow_blank => false
   validates_presence_of :customer_id
 
