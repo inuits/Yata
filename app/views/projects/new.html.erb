@@ -19,25 +19,25 @@
     <%= f.label :billable %><br />
     <%= f.check_box :billable %>
   </p>
+  <p>
+    <%= f.label :fixed_price %><br />
+    <%= f.check_box :fixed_price %>
+  </p>
    <p>
-    <%= f.label :fixed_price %><br />
-    <%= f.check_box :fixed_price %>
+    <%= f.label :price_per_day %> (if consultancy)<br />
+    <%= f.text_field :price_per_day %>
   </p>
   <p>
-    <%= f.label :fixed_price %><br />
-    <%= f.check_box :fixed_price %>
+    <%= f.label :end_date %> (if consultancy)<br />
+    <%= f.text_field :end_date %>
   </p>
   <p>
-    <%= f.label :price_per_day %><br />
+    <%= f.label :total_price %> (if fixed price)<br />
     <%= f.text_field :total_price %>
   </p>
   <p>
-    <%= f.label :days %><br />
-    <%= f.text_field :total_price %>
-  </p>
-  <p>
-  <%= f.label :end_date %><br />
-    <%= f.text_field :total_price %>
+    <%= f.label :duration %> (if fixed price, in days)<br />
+    <%= f.text_field :duration %>
   </p>
   <p>
     <%= f.submit "Create" %>
