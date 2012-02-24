@@ -127,15 +127,17 @@ class StatisticsController < ApplicationController
     end
     csv_data = FasterCSV.generate do |csv|
       if params[:summary_per_month].nil? or params[:summary_per_month].to_i != 1
-        csv << ['Id','Consultant','Customer', 'Project', 'Year', 'Month', '100%', '150%', '200%', 'travel']
+        csv << ['Id','Consultant login','Consultant name','Customer', 'Project ID', 'Project name', 'Year', 'Month', '100%', '150%', '200%', 'travel']
         @timesheets = Timesheet.find(:all, :conditions => conditions_text)
         @timesheets.each do |t|
           if t.project.nil?
             project_name = "No project"
+            project_id = 0
           else
             project_name = t.project.name
+            project_id = t.project.id
           end
-          csv << [t.id, t.authuser.fullname, t.customer.name, project_name, t.year, t.month, t.total_normal, t.total_rate2, t.total_rate3, t.total_travel]
+          csv << [t.id, t.authuser.login, t.authuser.fullname, t.customer.name, project_id, project_name, t.year, t.month, t.total_normal, t.total_rate2, t.total_rate3, t.total_travel]
         end
       else
         @datas = {}
