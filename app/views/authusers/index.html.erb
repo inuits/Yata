@@ -1,0 +1,38 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+</tr>
+</tbody>
+</table>
+
+<h1 style="text-align: center;">List of users</h1>
+
+<table style="border: 1px grey solid; border-radius: 0.5em; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>ID</th>
+    <th>Login</th>
+    <th>Full name</th>
+    <th>Email</th>
+    <th colspan="2">Admin</th>
+  </tr>
+
+<% for authuser in @authusers %>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
+    <td><%=h authuser.id %></td>
+    <td><%=h authuser.login %></td>
+    <td><%=h authuser.fullname %></td>
+    <td><%=h authuser.email %></td>
+    <td><% if authuser.admin %>
+       <span style="color:green">&#10004;</span>
+    <% else %>
+      <span style="color:rgb(150,0,0)">&#10008;</span>
+    <% end %></td>
+    <td><%=link_to 'Toggle', :action => 'toggleadmin', :id => authuser.id  %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

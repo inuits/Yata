@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :authusers
+  map.resources :authusers, :collection => { :toggleadmin => :get }
 
   map.resource :session
 

@@ -1,5 +1,5 @@
 class StatisticsController < ApplicationController
-  before_filter :login_required
+  before_filter :admin_required
   protect_from_forgery :except => :show
   require 'fastercsv'
 

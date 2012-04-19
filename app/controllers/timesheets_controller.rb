@@ -15,15 +15,19 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/all
   # GET /timesheets/all.xml
   def all
-    if params[:year].nil?
-      @year= Time.now.year
+    if logged_in? and current_authuser.admin
+      if params[:year].nil?
+        @year= Time.now.year
+      else
+        @year= params[:year].to_i
+      end
+      @timesheets = Timesheet.find_all_by_year(@year, :order => "year, month desc, authuser_id")
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @timesheets }
+      end
     else
-      @year= params[:year].to_i
-    end
-    @timesheets = Timesheet.find_all_by_year(@year, :order => "year, month desc, authuser_id")
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @timesheets }
+      redirect_back_or_default('/')
     end
   end
 

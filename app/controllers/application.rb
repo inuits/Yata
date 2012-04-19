@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
+  def admin_required
+    unless logged_in? and current_authuser.admin?
+      flash[:error] = "You do not have acces to this section"
+      redirect_back_or_default('/')
+    end
+  end
 end

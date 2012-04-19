@@ -1,11 +1,12 @@
 <h1 align="center">Main menu</h1>
 <table class="menu">
 <tr><td><%= link_to 'Timesheets', timesheets_path %></td></tr>
-<% if current_authuser.id == 1 %>
+<% if current_authuser.admin %>
 <tr><td><%= link_to 'Timesheets for ALL Consultants', all_timesheets_path %></td></tr>
 <tr><td><%= link_to 'Customers', customers_path %></td></tr>
 <tr><td><%= link_to 'Projects', projects_path %></td></tr>
 <tr><td><%= link_to 'Statistics', all_statistics_path %></td></tr>
+<tr><td><%= link_to 'Users', authusers_path %></td></tr>
 <% end %>
 <tr><td><%= link_to 'Logout', "/logout" %></td></tr>
 </table>
