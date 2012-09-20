@@ -17,7 +17,7 @@ class Authuser < ActiveRecord::Base
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :fullname, :password, :password_confirmation
+  attr_accessible :login, :email, :fullname, :password, :password_confirmation, :min_hours, :max_hours, :max_travel_hours
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
