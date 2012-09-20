@@ -14,6 +14,6 @@
 <p>Full name: <%= @authuser.fullname %></p>
 <h2>Calendar warnings</h2>
 <p>Minimum hours per day: <%= @authuser.min_hours %></p>
-<p>Minimum hours per day: <%= @authuser.max_hours %></p>
+<p>Maximum hours per day: <%= @authuser.max_hours %></p>
 <p>Maximum travel hours per day: <%= @authuser.max_travel_hours %></p>
 <p><%= link_to 'Update', edit_authuser_path(@authuser) %></p>
