@@ -154,7 +154,8 @@ else
     rate3= 0
     travel= 0
     
-    cont = "<div class='inner'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    cont_header = "<div class='inner'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    cont = ""
     @day[d.mday].each do |customer|
 
       if customer.nil?
@@ -190,12 +191,32 @@ else
         end
         cont += "</td></tr>"
       end
-      
+
     end
     cont += "<tr class=\"gridtotal\"><td class='normal'>#{normal}</td><td class='rate2'>#{rate2}</td><td class='rate3'>#{rate3}</td><td class='travel'>#{travel}</td></div></tr></table>"
+    bad_cont_header = "<div class='inner' style='color:red'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    good_cont_header = "<div class='inner'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    if [0,6].include?(d.wday)
+      cont_header = bad_cont_header
+    else
+      if normal + rate2 + rate3 > 10
+        cont_header = bad_cont_header
+      elsif normal + rate2 + rate3 < 8
+        cont_header = bad_cont_header
+      elsif travel > 3
+        cont_header = bad_cont_header
+      else
+        cont_header = good_cont_header
+      end
+  end
+  cont = cont_header + cont
   [cont, {}]
 else
+  if [0,6].include?(d.wday)
   [ "<div class='gday'>#{d.mday}</div><div class='inner'></div>", {}]
+  else
+  [ "<div class='gday' style='color:red'>#{d.mday}</div><div class='inner'></div>", {}]
+  end
 end
 end
 end
