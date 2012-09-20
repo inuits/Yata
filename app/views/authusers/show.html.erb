@@ -1,0 +1,18 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+</tr>
+</tbody>
+</table>
+
+<h1>User</h1>
+
+<h2>Personal information</h2>
+<p>Login: <%= @authuser.login %></p>
+<p>Email: <%= @authuser.email %></p>
+<h2>Calendar warnings</h2>
+<p>Minimum hours per day: <%= @authuser.min_hours %></p>
+<p>Minimum hours per day: <%= @authuser.max_hours %></p>
+<p>Maximum travel hours per day: <%= @authuser.max_travel_hours %></p>
+<p><%= link_to 'Update', edit_authuser_path(@authuser) %></p>
