@@ -35,6 +35,11 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/1.xml
   def show
     @timesheet = Timesheet.find(params[:id])
+    if not current_authuser.admin and @timesheet.authuser.id.to_i != current_authuser.id.to_i
+      flash[:notice] = 'You are not allowed to view this timesheet.'
+      redirect_to :root
+      return
+    end
     @hour = Hour.new
     @hour.day= Time.now.day
     @hour.normal= 8
@@ -71,6 +76,11 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/1/edit
   def edit
     @timesheet = Timesheet.find(params[:id])
+    if not current_authuser.admin and @timesheet.authuser.id.to_i != current_authuser.id.to_i
+      flash[:notice] = 'You are not allowed to edit this timesheet.'
+      redirect_to :root
+      return
+    end
     @projects = Project.find(:all, :conditions => ["customer_id = ?", @timesheet.customer_id])
   end
 
@@ -98,6 +108,11 @@ class TimesheetsController < ApplicationController
   # PUT /timesheets/1.xml
   def update
     @timesheet = Timesheet.find(params[:id])
+    if not current_authuser.admin and @timesheet.authuser.id.to_i != current_authuser.id.to_i
+      flash[:notice] = 'You are not allowed to edit this timesheet.'
+      redirect_to :root
+      return
+    end
 
     respond_to do |format|
       if @timesheet.update_attributes(params[:timesheet])
@@ -115,6 +130,11 @@ class TimesheetsController < ApplicationController
   # DELETE /timesheets/1.xml
   def destroy
     @timesheet = Timesheet.find(params[:id])
+    if not current_authuser.admin and @timesheet.authuser.id.to_i != current_authuser.id.to_i
+      flash[:notice] = 'You are not allowed to destroy this timesheet.'
+      redirect_to :root
+      return
+    end
     @timesheet.destroy
 
     respond_to do |format|
