@@ -18,6 +18,14 @@ class Hour < ActiveRecord::Base
     self[:travel]= convert(value)
   end
 
+  def weekday
+    month = self.timesheet.month
+    year = self.timesheet.year
+    day = self.day
+    d = Date.new(year,month,day)
+    return d.strftime('%a')
+  end
+
   protected
 
     def convert(value)

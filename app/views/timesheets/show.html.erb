@@ -93,7 +93,10 @@
 	  </tr>
 	  <% for hour in Hour.find(:all, :order => 'day', :conditions => ["timesheet_id=?", @timesheet]) %>
 	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
-	    <td width="5%"><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %></td>
+      <td width="5%"><% if not hour.weekday.nil?
+        %><span class="weekday"><%= link_to hour.weekday + " ", :action => 'edit', :controller => 'hours', :id => hour %></span><%
+        end %><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %>
+      </td>
 	    <td width="60%"><%=h hour.detail %></td>
 	    <td><%=h hour.normal %></td>
 	    <td><%=h hour.rate2 %></td>

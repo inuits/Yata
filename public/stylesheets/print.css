@@ -16,6 +16,10 @@ a:link, a:visited {
     text-decoration: none;
 }
 
+.ts-hours span.weekday {
+    display:none;
+}
+
 #footer {
     display:none;
 }
