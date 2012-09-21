@@ -43,7 +43,7 @@ class AuthusersController < ApplicationController
   def edit
     if logged_in? and current_authuser.admin
       @authuser = Authuser.find(params[:id])
-    elsif params[:id] == current_authuser.id
+    elsif logged_in?
       @authuser = current_authuser
     else
       redirect_back_or_default('/')
@@ -54,8 +54,12 @@ class AuthusersController < ApplicationController
   # PUT /authuser/1
   # PUT /authuser/1.xml
   def update
-    if logged_in? and current_authuser.admin or params[:id] == current_authuser.id
+    if logged_in? and current_authuser.admin
       @authuser = Authuser.find(params[:id])
+    elsif logged_in?
+      @authuser = current_authuser
+    end
+    if logged_in?
       respond_to do |format|
         if @authuser.update_attributes(params[:authuser])
           flash[:notice] = 'Your preferences were successfully updated.'
@@ -67,6 +71,7 @@ class AuthusersController < ApplicationController
         end
       end
     else
+      flash[:notice] = 'Your are not allowed to update this user.'
       redirect_back_or_default('/')
     end
   end
