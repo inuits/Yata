@@ -7,7 +7,11 @@
 <tr><td><%= link_to 'Projects', projects_path %></td></tr>
 <tr><td><%= link_to 'Statistics', all_statistics_path %></td></tr>
 <tr><td><%= link_to 'Users', authusers_path %></td></tr>
+<tr><td><%= link_to 'Tips', tips_path %></td></tr>
 <% end %>
 <tr><td><%= link_to 'Preferences', current_authuser %></td></tr>
 <tr><td><%= link_to 'Logout', "/logout" %></td></tr>
 </table>
+<% if not @tip.nil? %>
+<div style="text-align:center;padding-top:1em;">Tip: <%= @tip.text %></div>
+<% end %>

@@ -1,0 +1,13 @@
+<h1>Editing tip</h1>
+
+<% form_for(@tip) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @tip %> |
+<%= link_to 'Back', tips_path %>

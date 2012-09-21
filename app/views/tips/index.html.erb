@@ -1,0 +1,29 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New tip', new_tip_path %></td>
+</tr>
+</tbody>
+</table>
+
+<h1 style="text-align: center;">Listing tips</h1>
+
+<table style="height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>Tip</th>
+  </tr>
+
+<% for tip in @tips %>
+  <tr>
+    <td><%=h tip.text %></td>
+    <td><%= link_to 'Show', tip %></td>
+    <td><%= link_to 'Edit', edit_tip_path(tip) %></td>
+    <td><%= link_to 'Destroy', tip, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
