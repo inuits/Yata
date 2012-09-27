@@ -9,6 +9,7 @@ class TimesheetsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @timesheets }
+      format.json  { render :json => @timesheets }
     end
   end
 
@@ -47,6 +48,7 @@ class TimesheetsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @timesheet.to_xml(:include => [ :hours ]) }
+      format.json  { render :json => @timesheet.to_json(:include => [ @timesheet.hours ]) }
     end
   end
 
@@ -61,6 +63,7 @@ class TimesheetsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @timesheet }
+      format.json  { render :json => @timesheet }
     end
   end
 

@@ -6,6 +6,16 @@ class HoursController < ApplicationController
     @hour = Hour.find(params[:id])
   end
 
+  # GET /hours/1
+  def show
+    @hour = Hour.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml  { head :ok }
+      format.json  { render :json => @hour }
+    end
+  end
+
   # DELETE /hours/1
   # DELETE /hours/1.xml
   def destroy
@@ -16,6 +26,7 @@ class HoursController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(@timesheet) }
       format.xml  { head :ok }
+      format.json  { render :json => @hour }
     end
   end
 
