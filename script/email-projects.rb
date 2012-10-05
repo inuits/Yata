@@ -1,4 +1,15 @@
-#projects = Project.all()
+# this script is intented to be run as a cronjob
+# with the MAILTO environment variable
+
+print %{
+
+Hello,
+
+This is a mail giving you an overview of the projects for which there is a timesheet during the current and the last month.
+
+}
+
+
 def dhm_ts(hours)
   days = (hours/8).to_i
   if days < (hours/8)
