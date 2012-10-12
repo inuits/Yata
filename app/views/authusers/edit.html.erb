@@ -34,10 +34,5 @@
 <p><label for="max_hours">Maximum hours per day</label><br /><%= f.text_field :max_hours %></p>
 <p><label for="max_travel_hours">Maximum travel hours per day</label><br /><%= f.text_field :max_travel_hours %></p>
 
-<h2>Reminders</h2>
-
-<p><label for="reminder_eom">Remind me before end of the month</label><br /><%= f.check_box :reminder_eom %></p>
-<p><label for="reminder_daily">Remind me if put nothing in YATA after 3 workdays</label><br /><%= f.check_box :reminder_daily %></p>
-
 <p><%= f.submit "Update" %></p>
 <% end -%>

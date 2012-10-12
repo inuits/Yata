@@ -16,10 +16,4 @@
 <p>Minimum hours per day: <%= @authuser.min_hours %></p>
 <p>Maximum hours per day: <%= @authuser.max_hours %></p>
 <p>Maximum travel hours per day: <%= @authuser.max_travel_hours %></p>
-
-<h2>Reminders</h2>
-
-<p>Remind me before the end of the month: <%= @authuser.reminder_eom %></p>
-<p>Remind me if put nothing in YATA after 3 workdays: <%= @authuser.reminder_daily %></p>
-
 <p><%= link_to 'Update', edit_authuser_path(@authuser) %></p>
