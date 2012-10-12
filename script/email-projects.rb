@@ -2,10 +2,10 @@
 # with the MAILTO environment variable
 
 print %{
+<html><body>
+<p>Hello,</p>
 
-Hello,
-
-This is a mail giving you an overview of the projects for which there is a timesheet during the current and the last month.
+<p>This is a mail giving you an overview of the projects for which there is a timesheet during the current and the last month.</p>
 
 }
 
@@ -18,58 +18,52 @@ def dhm_ts(hours)
   return days.to_s + "d"
 end
 
-def print_project_conclusion(project_id, normal, rate2, rate3, travel, max_user_size)
-  print "-".ljust(15,"-")
-  print "\t"
-  print "-".ljust(max_user_size,"-")
-  print "\t----\t----\t----\t----\n"
-  print "Hours -".ljust(15,"-")
-  print "\t"
-  print "-".ljust(max_user_size,"-")
-  print "\t"
+def print_project_conclusion(project_id, normal, rate2, rate3, travel)
+  print "<tr><td colspan=\"2\">"
+  print "Hours"
+  print "</td><td>"
   print normal
-  print "\t"
+  print "</td><td>"
   print rate2
-  print "\t"
+  print "</td><td>"
   print rate3
-  print "\t"
+  print "</td><td>"
   print travel
-  print "\n"
-  print "Days ".ljust(15,"-")
-  print "\t"
-  print "-".ljust(max_user_size,"-")
-  print "\t"
+  print "</td></tr>"
+  print "<tr><td colspan=\"2\">"
+  print "Days "
+  print "</td><td>"
   print dhm_ts(normal)
-  print "\t"
+  print "</td><td>"
   print dhm_ts(rate2)
-  print "\t"
+  print "</td><td>"
   print dhm_ts(rate3)
-  print "\t"
+  print "</td><td>"
   print dhm_ts(travel)
-  print "\n"
-  print "\n"
+  print "</td></tr></table><br />"
   total_hours = normal + rate2*1.5 + rate3*2
   total_days = total_hours/8
   print "Worked: " + total_hours.to_s + " hours / " + total_days.to_s + " days"
-  print "\n"
+  print "<br />"
   project = Project.find(project_id)
   if project.duration
     print "Planned days: " + project.duration.to_s + " / "
     if project.duration < total_days
+      print "<span style=\"color:red\">"
       print (total_days - project.duration).to_s
-      print " TOO MUCH DAYS"
+      print " TOO MUCH DAYS</span>"
     elsif project.duration > total_days
       print (project.duration - total_days).to_s
       print " days left"
     else
       print "project completed"
     end
-    print "\n"
+    print "<br />"
   end
   if project.price_per_day
     print "Price per day: " + project.price_per_day.to_s
     print " / " + (total_days * project.price_per_day).to_s + " EUR used"
-    print "\n"
+    print "<br />"
   end
   if project.total_price
     print "Total price: " + project.total_price.to_s + " EUR"
@@ -77,9 +71,9 @@ def print_project_conclusion(project_id, normal, rate2, rate3, travel, max_user_
       price = total_days * project.price_per_day
       print " / used " + price.to_s + " EUR / "
       if price > project.total_price
-        print " TOO MUCH MONEY: "
+        print "<span style=\"color:red\"> TOO MUCH MONEY: "
         print (price - project.total_price).to_s
-        print " EUR"
+        print " EUR</span>"
       elsif price < project.total_price
         print (project.total_price - price).to_s
         print " EUR left"
@@ -87,15 +81,7 @@ def print_project_conclusion(project_id, normal, rate2, rate3, travel, max_user_
         print "project completed"
       end
     end
-    print "\n"
-  end
-end
-
-max_user_size = 0
-users = Authuser.all()
-users.each do |u|
-  if u.fullname.length > max_user_size
-    max_user_size = u.fullname.length
+    print "<br />"
   end
 end
 
@@ -143,7 +129,7 @@ project_travel = 0
 timesheets.each do |ts|
   if ts.customer.id != current_customer or ts.project.id != current_project
     if current_customer != -1:
-      print_project_conclusion(current_project, project_normal, project_rate2, project_rate3, project_travel, max_user_size)
+      print_project_conclusion(current_project, project_normal, project_rate2, project_rate3, project_travel)
     end
     project_normal = 0
     project_rate2 = 0
@@ -158,35 +144,34 @@ timesheets.each do |ts|
     current_customer_name=ts.customer.name
     current_customer = ts.customer.id
     current_project = -1
-    print "\n-".ljust(20,"-")
-    print "\n"
   end
   if not ts.project.id == current_project
-    print "\nCustomer: "
+    print "\n<hr /><h2>Customer: "
     print current_customer_name
-    print "\nProject: "
+    print "</h2><h3>Project: "
     print ts.project.name
-    print "\n"
-    print "\n"
+    print "</h3><br />"
+    print "<table><tr><th>Month</th><th>Consultant</th><th>100%</th><th>150%</th><td>200%</th><th>Travel</th></tr>"
     current_project = ts.project.id
   end
+  print "<tr><td>"
   print Date::MONTHNAMES[ts.month]
   print " "
   print ts.year
-  print "\t"
-  print ts.authuser.fullname.ljust(max_user_size)
-  print "\t"
+  print "</td><td>"
+  print ts.authuser.fullname
+  print "</td><td>"
   print ts.total_normal
-  print "\t"
+  print "</td><td>"
   print ts.total_rate2
-  print "\t"
+  print "</td><td>"
   print ts.total_rate3
-  print "\t"
+  print "</td><td>"
   print ts.total_travel
-  print "\n"
+  print "</td></tr>"
 end
-print_project_conclusion(current_project, project_normal, project_rate2, project_rate3, project_travel, max_user_size)
+print_project_conclusion(current_project, project_normal, project_rate2, project_rate3, project_travel)
 
-print "\n"
-print "\n\n\n"
-print "The YATA guy\n"
+print "<hr>"
+print "<br>"
+print "The YATA guy</body></html>"
