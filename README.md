@@ -13,6 +13,6 @@ Features
 Getting started
 ---
 
-# create a config file 'config/database.yml'.
-# run rake db:migrate
-# run ./script/server
+1. create a config file 'config/database.yml'.
+2. run rake db:migrate
+3. run ./script/server
