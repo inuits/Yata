@@ -29,7 +29,8 @@
   <td><% if @project.billable %><% if @project.fixed_price %><%= @project.duration %> days<% else %><%= @project.end_date%><% end %><% else %>N/A<% end %></td>
 </tr>
 </table>
-<h2>Details</h2>
+<% @datas.each do |year, timesheets| %>
+<h2><%=year%></h2>
 <table class="ts-hours">
   <tr class="table-header">
     <th class="consname">Consultant</th>
@@ -46,7 +47,7 @@
     <th>Nov</th>
     <th>Dec</th>
   </tr>
-<% for data in @datas %>
+<% timesheets.each do |data| %>
   <tr class="task-line-<%= cycle("odd","even") %>">
     <td class="consname"><%=h data[0] %></td>
     <td><%=h data[1][0] %></td>
@@ -65,7 +66,7 @@
 <% end %>
   <tr id="total">
     <td class="consname">Total</td>
-    <% @sum.each do |s| %>
+    <% @sum[year].each do |s| %>
     <td><%=h s %>
 <% if not @project.fixed_price %>
   <% if not @project.price_per_day.nil? %><br /><%=h @project.price_per_day*s/8 %> €<% end %>
@@ -74,6 +75,7 @@
     <% end %>
   </tr>
 </table>
+<%end%>
 <p>Spent time on this project: <%=h @total_time %> hours (<%=h @total_time/8 %> days)</p>
 <% if not @project.fixed_price %>
 <% if not @project.price_per_day.nil? %>

@@ -20,21 +20,25 @@ class ProjectsController < ApplicationController
     else
       @year= params[:year].to_i
     end
-    @timesheets = Timesheet.find_all_by_project_id(@project.id, :conditions => ["year = ?", @year])
+    @timesheets = Timesheet.find_all_by_project_id(@project.id)
 
 
 
     @total_time = 0
     @datas = {}
-    @sum = Array.new(12,0.0)
+    @sum = Array.new()
 
     @timesheets.each do |t|
       @total_time += t.total_normal + 1.5*t.total_rate2 + 2*t.total_rate3
-      if @datas[t.authuser.fullname].nil?
-        @datas[t.authuser.fullname] = Array.new(12,0.0)
+      if @datas[t.year].nil?
+        @datas[t.year] = {}
+        @sum[t.year] = Array.new(12,0.0)
       end
-      @datas[t.authuser.fullname][t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
-      @sum[t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
+      if @datas[t.year][t.authuser.fullname].nil?
+        @datas[t.year][t.authuser.fullname] = Array.new(12,0.0)
+      end
+      @datas[t.year][t.authuser.fullname][t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
+      @sum[t.year][t.month-1] += t.total_normal + 1.5 * t.total_rate2 + 2 * t.total_rate3
     end
 
 
