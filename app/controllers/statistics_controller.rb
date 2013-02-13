@@ -30,14 +30,18 @@ class StatisticsController < ApplicationController
     else
       @year= params[:year].to_i
     end
-    
-    conditions_text = "year = #{@year}"
-    
-    if not params[:month].nil? and params[:month].to_i != -1
+
+    if params[:month].to_i != -2
+      conditions_text = "year = #{@year}"
+    else
+      conditions_text = "year > 0"
+    end
+
+    if not params[:month].nil? and params[:month].to_i > 0
       conditions_text += " AND month = #{params[:month].to_i}"
       @month= params[:month].to_i
     else
-      @month= -1
+      @month= params[:month].to_i
     end
     if not params[:customer_id].nil? and params[:customer_id].to_i != -1
       conditions_text += " AND customer_id = #{params[:customer_id].to_i}"

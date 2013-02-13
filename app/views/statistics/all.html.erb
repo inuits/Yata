@@ -34,7 +34,7 @@
     <td>
       <p>
         <%= label_tag :month %>&nbsp;<br />
-        <%= select_tag :month, options_for_select([['All the year', -1]] | monthnames, @month) %>
+        <%= select_tag :month, options_for_select([['Any month', -1],['Any month, any year', -2]] | monthnames, @month) %>
       </p>
     </td>
     <td>
