@@ -78,7 +78,7 @@
     <td<% if currid == timesheet.authuser_id %> class="repeat"<% else %><%currid = timesheet.authuser_id %><% end %>>
       <%=h timesheet.authuser.fullname %>
     </td>
-    <td><%= link_to monthname(timesheet.month), :controller => 'timesheets', :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => currid %></td>
+    <td><%= link_to "#{monthname(timesheet.month)} #{timesheet.year}", :controller => 'timesheets', :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => currid %></td>
     <td<% if curcust == timesheet.customer_id %> class="repeat"<% end %>>
       <%=h timesheet.customer.name %>
     </td>
