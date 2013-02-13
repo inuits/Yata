@@ -31,6 +31,25 @@
 </table>
 <% @datas.sort.reverse.each do |year, timesheets| %>
 <h2><%=year%></h2>
+
+<div id="chart<%=year%>" style="width: 550px; height: 200px;"></div>
+<script type="text/javascript">
+
+c<%=year%> = new Charts.LineChart('chart<%=year%>');
+
+c<%=year%>.add_line ({ 
+data: [
+<% i=0 %>
+<% @sum[year].each do |s| %>
+  <% i=i+1 %>
+  [<%=h i %>, <%=h s %>],
+<% end %>
+]
+});
+
+c<%=year%>.draw();
+</script>
+
 <table class="ts-hours">
   <tr class="table-header">
     <th class="consname">Consultant</th>
