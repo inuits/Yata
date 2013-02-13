@@ -43,8 +43,6 @@ line_width:1,
 dot_stroke_size: 1
       });
 
-c<%=year%>.add_line ({
-data: [[1,0,{no_dot:true}]],options: {line_width:0 }});
 
 c<%=year%>.add_line ({ 
 data: [
@@ -55,6 +53,9 @@ data: [
 <% end %>
 ]
 });
+
+c<%=year%>.add_line ({
+data: [[1,0,{no_dot:true}]],options: {line_width:0 }});
 
 c<%=year%>.draw();
 </script>
