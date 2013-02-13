@@ -32,10 +32,16 @@
 <% @datas.sort.reverse.each do |year, timesheets| %>
 <h2><%=year%></h2>
 
-<div id="chart<%=year%>" style="width: 550px; height: 200px;"></div>
+<div id="chart<%=year%>" style="width: 550px; height: 200px; margin:auto;"></div>
 <script type="text/javascript">
 
-c<%=year%> = new Charts.LineChart('chart<%=year%>');
+  c<%=year%> = new Charts.LineChart('chart<%=year%>', {
+label_max: false,
+label_min: false,
+dot_size: 4,
+line_width:1,
+dot_stroke_size: 1
+      });
 
 c<%=year%>.add_line ({ 
 data: [
