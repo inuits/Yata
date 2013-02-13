@@ -49,7 +49,7 @@ data: [
 <% i=0 %>
 <% @sum[year].each do |s| %>
   <% i=i+1 %>
-  [<%=h i %>, <%=h s %>],
+  [<%=h i %>, <%=h s %>, {tooltip:'<%= truncate(monthname(i),3,'') %>: <%= s %>'}],
 <% end %>
 ]
 });
