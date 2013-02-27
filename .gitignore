@@ -16,3 +16,5 @@
 
 # Bundle
 vendor/bundle
+
+bin/*
