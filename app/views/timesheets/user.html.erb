@@ -1,0 +1,233 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'Timesheets', :controller => 'timesheets' %></td>
+</tr>
+</tbody>
+</table>
+
+<TABLE FRAME=VOID CELLSPACING=0 COLS=10 RULES=NONE BORDER=0 WIDTH="100%">
+	<COLGROUP><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86><COL WIDTH=86></COLGROUP>
+
+	<TBODY>
+		<TR>
+			<TD COLSPAN=4 STYLE="border-top: 3px solid #000000; border-left: 3px solid #000000" WIDTH=86 HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial" SIZE=4>  MONTHLY TIME REPORT</FONT></B></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD STYLE="border-top: 3px solid #000000" WIDTH=86 ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD STYLE="border-right: 3px solid #000000; border-top: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"></TD>
+			</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=17 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"></TD>
+
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=17 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=RIGHT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF"> </TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=23 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial">Consultant :</FONT></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><FONT FACE="Arial" SIZE=4><BR></FONT></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><%= @timesheets[0].authuser.fullname %></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><BR></TD>
+			<TD ALIGN=LEFT><BR></TD>
+
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=17 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Month :</FONT></B></TD>
+
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT><%= monthname(@month) %></TD>
+			<TD ALIGN=LEFT><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+
+		</TR>
+		<TR>
+			<TD STYLE="border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><B><FONT FACE="Arial">Year :</FONT></B></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF" SDNUM="1033;0;0"><BR></TD>
+			<TD STYLE="border-bottom: 1px solid #000000" ALIGN=RIGHT BGCOLOR="#FFFFFF" SDVAL="2009" SDNUM="1033;"><%= @year %></TD>
+			<TD ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+		<TR>
+			<TD STYLE="border-bottom: 3px solid #000000; border-left: 3px solid #000000" HEIGHT=16 ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT BGCOLOR="#FFFFFF"><BR></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><B><FONT FACE="Arial"><BR></FONT></B></TD>
+			<TD STYLE="border-bottom: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+			<TD STYLE="border-bottom: 3px solid #000000; border-right: 3px solid #000000" ALIGN=LEFT><FONT FACE="Arial"><BR></FONT></TD>
+		</TR>
+	</TBODY>
+
+</TABLE>
+<!-- ************************************************************************** -->
+
+
+<%= calendar(:year => @year, :month => @month, :first_day_of_week => 1, :show_today => false) do |d|
+
+if d.nil?
+  cont = "<div class='innercode'><table class=\"code\">"
+  for timesheet in @timesheets
+    if not timesheet.project.nil?
+      cont += "<tr><td>"+ link_to(timesheet.customer.shortname + " - " + timesheet.project.shortname, :controller => 'timesheets', :action => 'show', :id => timesheet) +"</td></tr>"
+    else
+      cont += "<tr><td>"+ link_to(timesheet.customer.shortname, :controller => 'timesheets', :action => 'show', :id => timesheet) +"</td></tr>"
+    end
+  end
+  cont += "<tr><td><b>TOTAL</b></td></tr></table></div>"
+  cont
+else
+  if not @day[d.mday].nil?
+    normal= 0
+    rate2= 0
+    rate3= 0
+    travel= 0
+    
+    cont_header = "<div class='inner'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    cont = ""
+    @day[d.mday].each do |customer|
+
+      if customer.nil?
+        cont += "<td class='normal'>0</td><td class='rate2'>0</td><td class='rate3'>0</td><td class='travel'>0</td></tr>"
+      else
+        cont += "<td class='normal'>"
+        if not customer["normal"].nil?
+          cont += "#{customer['normal']}"
+          normal += customer["normal"]
+        else
+          cont += "0"
+        end
+        cont += "</td><td class='rate2'>"
+        if not customer["rate2"].nil?
+          cont += "#{customer['rate2']}"
+          rate2 += customer["rate2"]
+        else
+          cont += "0"
+        end
+        cont += "</td><td class='rate3'>"
+        if not customer["rate3"].nil?
+          cont += "#{customer['rate3']}"
+          rate3 += customer["rate3"]
+        else
+          cont += "0"
+        end
+        cont += "</td><td class='travel'>"
+        if not customer["travel"].nil?
+          cont += "#{customer['travel']}"
+          travel += customer["travel"]
+        else
+          cont += "0"
+        end
+        cont += "</td></tr>"
+      end
+
+    end
+    cont += "<tr class=\"gridtotal\"><td class='normal'>#{normal}</td><td class='rate2'>#{rate2}</td><td class='rate3'>#{rate3}</td><td class='travel'>#{travel}</td></div></tr></table>"
+    bad_cont_header = "<div class='inner'><div class='gday' style='color:red;font-weight:bold'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    good_cont_header = "<div class='inner'><div class='gday'>#{d.mday}</div><table class=\"daygrid\" cellspacing=0><tr>"
+    if [0,6].include?(d.wday)
+      cont_header = bad_cont_header
+    else
+      if normal + rate2 + rate3 > current_authuser.max_hours
+        cont_header = bad_cont_header
+      elsif normal + rate2 + rate3 < current_authuser.min_hours
+        cont_header = bad_cont_header
+      elsif travel > current_authuser.max_travel_hours
+        cont_header = bad_cont_header
+      else
+        cont_header = good_cont_header
+      end
+  end
+  cont = cont_header + cont
+  [cont, {}]
+else
+  if [0,6].include?(d.wday)
+  [ "<div class='inner'><div class='gday'>#{d.mday}</div></div>", {}]
+  else
+  [ "<div class='inner'><div class='gday' style='color:red;font-weight:bold'>#{d.mday}</div></div>", {}]
+  end
+end
+end
+end
+%>
+
+<p>
+<table class="daygrid" width="100%">
+<tr bgcolor='#aaaaaa' style='text-align:center;'>
+  <td class='normal'>Normal</td>
+  <td class='rate2'>150%</td>
+  <td class='rate3'>200%</td>
+  <td class='travel'>Travel</td>
+</tr>
+</table>

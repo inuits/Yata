@@ -1,0 +1,30 @@
+<h1>New timesheet</h1>
+
+<%= form_for(@timesheet) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] }, :prompt => 'Select a customer'%>
+    <%= observe_field :timesheet_customer_id, :url => {:action => :update_project_div},  :with => :timesheet_customer_id %>
+  </p>
+  <div id="project_div">
+  </div>
+  <p>
+    <%= f.label :month %><br />
+    <%= f.select :month, monthnames %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.text_field :year, :limit => 4 %>
+  </p>
+  <p>
+    <%= f.label :remarks %><br />
+    <%= f.text_area :remarks , :rows => 4, :cols => 90 %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', timesheets_path %>

@@ -1,0 +1,35 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New timesheet', new_timesheet_path %></td>
+<td><%= link_to 'Exports', exports_statistics_path %></td>
+</tr>
+</tbody>
+</table>
+<h1 style="text-align: center;">Export in CSV</h1>
+
+<% form_tag '/statistics/generate_csv' do %>
+<p>
+  <%= label_tag :customer_id %><br />
+  <%= select_tag :customer_id, options_for_select([[ 'All customers', -1 ]] | Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] }) %>
+  <%= observe_field :customer_id, :url => {:action => :update_project_div}, :with => :customer_id %>
+</p>
+<div id="project_div"></div>
+  <p>
+    <%= label_tag :month %><br />
+    <%= select_tag :month, options_for_select([['All the year', -1]] | monthnames, Time.now.mon) %>
+  </p>
+  <p>
+    <%= label_tag :year %><br />
+    <%= text_field_tag :year, Time.now.year, :maxlength => 4 %>
+  </p>
+  <p>
+    <%= label_tag :summary_per_month %><br />
+    <%= check_box_tag :summary_per_month %>
+  </p>
+  <p>
+     <%= submit_tag "Export" %>
+  </p>
+<% end -%>
+<br />

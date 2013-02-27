@@ -1,0 +1,40 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New timesheet', new_timesheet_path %></td>
+</tr>
+</tbody>
+</table>
+
+<h1 style="text-align: center;">Listing timesheets for All Consultants</h1>
+
+<h2 style="text-align: center;"><%= link_to '&lt;&lt;', all_timesheets_path(:year => @year-1) %>&nbsp;<%= @year %>&nbsp;<%= link_to '&gt;&gt;', all_timesheets_path(:year => @year+1) %></h2>
+<table style="width: 60%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>Consultant</th>
+    <th>Month</th>
+    <th>Customer</th>
+    <th>Project</th>
+  </tr>
+
+<% currid=0 %>
+<% for timesheet in @timesheets %>
+  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
+    <td>
+<% if currid != timesheet.authuser_id %>
+    <% currid = timesheet.authuser_id %>
+    <%=h timesheet.authuser.fullname %>
+<% end %>
+    </td>
+    <td><%= link_to monthname(timesheet.month), :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => currid %></td>
+    <td><%=h timesheet.customer.name %></td>
+    <td><% if not timesheet.project.nil? %><%=h timesheet.project.name %><% end %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+    <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

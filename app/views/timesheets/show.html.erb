@@ -1,0 +1,150 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome' %></td>
+<td><%= link_to 'Timesheets', timesheets_path %></td>
+<td><%= link_to 'Edit header', edit_timesheet_path(@timesheet) %></td>
+<td><%= link_to_function("Add detail", "Element.show('new-task')")%>
+</tr>
+</tbody>
+</table>
+
+
+<table style="border: 3px solid black;" cellspacing="0" cols="10" rules="none" width="100%">
+	<colgroup><col width="86"><col width="86"><col width="46"><col width="126"><col width="86"><col width="86"><col width="86"><col width="86"><col width="86"><col width="86"></colgroup>
+
+	<tbody>
+		<tr>
+			<td colspan="6" align="left" height="23" width="86"><b><font face="Arial" size="4">  MONTHLY TIME REPORT</font></b></td>
+			<td colspan="4"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td align="center"><img src="/images/inuits.png"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td height="8" colspan="10"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan="2"><b><font face="Arial">Consultant:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.authuser.fullname %></td>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Month:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="right"><%= monthname(@timesheet.month) %></td>
+      <td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Customer:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.customer.name %></td>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Year:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="right"><%= @timesheet.year %></td>
+			<td></td>
+			<td></td>
+		</tr>
+    <% if not @timesheet.project.nil? %>
+		<tr>
+			<td></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left" colspan=2><b><font face="Arial">Project:</font></b></td>
+			<td style="border-bottom: 1px solid rgb(0, 0, 0);" align="left"><%= @timesheet.project.name %></td>
+			<td></td>
+			<td></td>
+		</tr>
+    <% end %>
+		<tr>
+			<td height="20" colspan="10"></td>
+		</tr>
+	</tbody>
+
+</table>
+<!-- ************************************************************************** -->
+
+
+<br/>
+    <%= remote_form_for( :hour, @hour, 
+       :url => {:action => :create_hour, :id => @timesheet}, 
+    :update => "task-list",
+    :position => 'bottom',
+    :complete => "Element.hide('new-task')"
+    ) do |f| %>
+
+	<table id="task-list" class="ts-hours">
+	  <tr><th colspan=2 width="70%"></th><th width="30%" colspan=4>Hours</th></tr>
+	  <tr><th>Day</th><th width="60%">Task</th><th id="normal">Normal</th><th id="rate2">150%</th><th id="rate3">200%</th><th id="travel">Travel</th></tr>
+
+	  <tr id="new-task" bgcolor="yellow" style="display:none;">
+	    <td><%= f.text_field :day, :size => 3, :tabindex => 1 %></td>
+	    <td width="60%"><%= f.text_field :detail, :tabindex => 2 %><%= submit_tag 'Add', :tabindex => 7 %></td>
+	    <td><%= f.text_field :normal, :size => 4, :tabindex => 3 %></td>
+	    <td><%= f.text_field :rate2, :size => 4, :tabindex => 4 %></td>
+	    <td><%= f.text_field :rate3, :size => 4, :tabindex => 5 %></td>
+	    <td><%= f.text_field :travel, :size => 4, :tabindex => 6 %></td>
+	  </tr>
+	  <% for hour in Hour.find(:all, :order => 'day', :conditions => ["timesheet_id=?", @timesheet]) %>
+	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
+      <td width="5%"><% if not hour.weekday.nil?
+        %><span class="weekday"><%= link_to hour.weekday + " ", :action => 'edit', :controller => 'hours', :id => hour %></span><%
+        end %><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %>
+      </td>
+	    <td width="60%"><%=h hour.detail %></td>
+	    <td><%=h hour.normal %></td>
+	    <td><%=h hour.rate2 %></td>
+	    <td><%=h hour.rate3 %></td>
+	    <td><%=h hour.travel %></td>
+	  </tr>
+	  <% end %>
+
+	  <tr id="total">
+	    <td colspan=2 id="totaltask">Total</td>
+	    <td><%=h @timesheet.total_normal %></td>
+	    <td><%=h @timesheet.total_rate2 %></td>
+	    <td><%=h @timesheet.total_rate3 %></td>
+	    <td><%=h @timesheet.total_travel %></td>
+	  </tr>
+	  <tr id="total-days">
+	    <td colspan=2 id="totaltask">Total in 8h days</td>
+	    <td><%= dhm_ts(@timesheet.total_normal) %></td>
+	    <td><%=h dhm_ts(@timesheet.total_rate2) %></td>
+	    <td><%=h dhm_ts(@timesheet.total_rate3) %></td>
+	    <td><%=h @timesheet.total_travel %></td>
+	  </tr>
+
+	</table>
+      
+      
+
+<% end %>
+    
+<br /><br />
+
+<table width="100%">
+<tr>
+<td>
+    <table class="signature">
+      <tr><th>Signature Consultant</th><th>Signature Customer</th><tr>
+      <tr><td></td><td></td></tr>
+    </table>
+</td>
+<td>
+</td>
+<td>
+<div class="remark">
+    <table class="remarks">
+      <tr><th>Remarks</th><tr>
+      <tr valign="top" align="left"><td><%= @timesheet.remarks %></td></tr>
+    </table>
+</div>
+</td>
+</tr>
+</table>

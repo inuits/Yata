@@ -1,0 +1,31 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New customer', new_customer_path %></td>
+</tr>
+</tbody>
+</table>
+
+<h1 style="text-align: center;">Listing customers</h1>
+
+<table style="height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>Shortname</th>
+    <th>Name</th>
+  </tr>
+
+<% for customer in @customers %>
+  <tr>
+    <td><%=h customer.shortname %></td>
+    <td><%=h customer.name %></td>
+    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+    <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

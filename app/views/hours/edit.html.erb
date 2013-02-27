@@ -1,0 +1,25 @@
+<h1>Edit entry</h1>
+
+<%= form_for(@hour) do |f| %>
+
+<table>
+<tr><th colspan=2></th><th colspan=4>Hours</th></tr>
+<tr><th>Day</th><th>Task</th><th>Normal</th><th>150%</th><th>200%</th><th>Travel</th></tr>
+
+  <tr>
+    <td><%= f.text_field :day, :size => 3 %></td>
+    <td><%= f.text_field :detail, :size => 80 %></td>
+    <td><%= f.text_field :normal, :size => 3 %></td>
+    <td><%= f.text_field :rate2, :size => 3 %></td>
+    <td><%= f.text_field :rate3, :size => 3 %></td>
+    <td><%= f.text_field :travel, :size => 3 %></td>
+  </tr>
+</table>
+<p><%= f.error_messages %></p>
+
+<%= f.submit "Update" %>
+<%= link_to 'Destroy', @hour, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+
+
+<%= link_to 'Cancel', @hour.timesheet %>

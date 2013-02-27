@@ -1,0 +1,21 @@
+<div style="text-align: center;"><img src="/images/inuits-eyes.jpg" style="" width="200"><br><br></div>
+
+<%= form_tag session_path do -%>
+
+<table class="menu">
+<tr><td><label for="login">Login</label></td>
+<td><%= text_field_tag 'login' %></td>
+
+<tr><td><label for="password">Password</label></td>
+<td><%= password_field_tag 'password' %></td>
+
+
+<tr><td colspan=2><label for="remember_me">Remember me:</label><%= check_box_tag 'remember_me' %></td></tr>
+<tr></tr>
+<tr><td colspan=2><%= submit_tag 'Log in' %></td></tr>
+</table>
+<p>
+<table class="menu">
+<tr><td><%= link_to 'Create New User', :controller => 'authusers', :action => 'new' %></td></tr>
+</table>
+<% end -%>

@@ -1,0 +1,49 @@
+<h1>Editing project</h1>
+
+<%= form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :shortname %><br />
+    <%= f.text_field :shortname %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
+  </p>
+   <p>
+    <%= f.label :billable %><br />
+    <%= f.check_box :billable %>
+  </p>
+  <p>
+    <%= f.label :fixed_price %><br />
+    <%= f.check_box :fixed_price %>
+  </p>
+   <p>
+    <%= f.label :price_per_day %> (if consultancy)<br />
+    <%= f.text_field :price_per_day %>
+  </p>
+  <p>
+    <%= f.label :end_date %> (if consultancy)<br />
+    <%= f.text_field :end_date %>
+  </p>
+  <p>
+    <%= f.label :total_price %> (if fixed price)<br />
+    <%= f.text_field :total_price %>
+  </p>
+  <p>
+    <%= f.label :duration %> (if fixed price, in days)<br />
+    <%= f.text_field :duration %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>

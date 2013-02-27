@@ -1,0 +1,202 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.ts {
+    width: 100%;
+}
+
+.ts-title {
+  font-size: 20px;
+  background-color: #aaaaff;
+  text-align: center;
+}
+
+.ts-hours {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.ts-total {
+    width: 100%;
+    display:none;
+}
+
+.ts-hours th {
+    background-color: #aaaaaa;
+}
+
+.ts-hours td {
+    text-align: center;
+    border: 1px solid grey;
+}
+
+.ts-hours th#normal {
+    background-color: yellow;
+    border: 1px solid black;
+}
+.ts-hours th#rate2 {
+    background-color: green;
+    border: 1px solid black;
+}
+.ts-hours th#rate3 {
+    background-color: blue;
+    border: 1px solid black;
+}
+.ts-hours th#travel {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.ts-hours tr#total {
+    color: black;
+    background-color: #aaaaff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.ts-hours tr#total-days {
+    color: black;
+    background-color: #aaaaff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+.ts-hours td#totaltask {
+    text-align: right;
+    color: black;
+    background-color: #aaaaff;
+    padding-right: 1em;
+    font-weight: bold;
+}
+
+
+.task-line-odd {
+    background-color: #ffffff;
+}
+
+.task-line-even {
+    background-color: #eeeeee;
+}
+
+.ts-detail {
+    width: 60%;
+}
+
+#footer {
+  display:block;
+  margin:0 auto;
+  text-align:center;
+  overflow:auto;
+}
+
+#footer a {
+  display:block;
+  width:94px;
+  height:40px;  
+  text-indent:-999em;
+  margin:0 5px;
+  float:left;
+}
+
+.menu {
+    background-color: #eeeeff;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+.menu td {
+    text-align: center;
+}
+
+.topmenu {
+    background-color: rgb(221, 221, 255); 
+    text-align: left; 
+    width: 100%; 
+    margin-bottom: 5px;
+}
+
+.topmenu td {
+    background-color: #eeeeff;
+    width: 50px;
+}
+
+.signature {
+    border: 2px solid black;
+    padding: 5px;
+}
+.signature td {
+    border: 1px solid black;
+    height: 100px;
+}
+
+.signature th {
+    width: 250px;
+}
+
+.remarks {
+    border: 2px solid black;
+    padding: 5px;
+    width: 30em;
+}
+.remarks th {
+    width: 250px;
+}
+
+.remarks td {
+    border: 1px solid black;
+    height: 100px;
+}
+

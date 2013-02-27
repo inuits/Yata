@@ -1,0 +1,38 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+</tr>
+</tbody>
+</table>
+
+<h1>User preferences</h1>
+
+<%= error_messages_for :authuser %>
+<%= form_for @authuser do |f| -%>
+
+<h2>Personal information</h2>
+
+<p><label for="login">Login</label><br/>
+<%= f.text_field :login %></p>
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="fullname">Fullname</label><br/>
+<%= f.text_field :fullname %></p>
+
+<p><label for="password">Password</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<h2>Calendar warnings</h2>
+
+<p><label for="min_hours">Minimum hours per day</label><br /><%= f.text_field :min_hours %></p>
+<p><label for="max_hours">Maximum hours per day</label><br /><%= f.text_field :max_hours %></p>
+<p><label for="max_travel_hours">Maximum travel hours per day</label><br /><%= f.text_field :max_travel_hours %></p>
+
+<p><%= f.submit "Update" %></p>
+<% end -%>

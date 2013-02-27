@@ -1,0 +1,112 @@
+<table class="topmenu" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td><%= link_to 'Menu', :controller => 'welcome'  %></td>
+<td><%= link_to 'New timesheet', new_timesheet_path %></td>
+<td><%= link_to 'Exports', exports_statistics_path %></td>
+</tr>
+</tbody>
+</table>
+
+<h1 style="text-align: center;">Statistics for All Consultants</h1>
+
+<h2 style="text-align: center;"><%= link_to '&lt;&lt;', all_statistics_path(:year => @year-1) %>&nbsp;<%= @year %>&nbsp;<%= link_to '&gt;&gt;', all_statistics_path(:year => @year+1) %></h2>
+<% form_tag '/statistics/all', :method => :get do %>
+<table style="margin:auto;">
+  <tr>
+    <td>
+      <p><%= hidden_field_tag :sort, @sort %>
+        <%= label_tag :customer_id %>&nbsp;<br />
+        <%= select_tag :customer_id, options_for_select([[ 'All customers', -1 ]] | Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] }, @customer_id) %>
+        <%= observe_field :customer_id, :url => {:action => :update_project_div}, :with => :customer_id %>
+      </p>
+    </td>
+    <td>
+<div id="project_div">
+<% if @customer_id > 0 %>
+  <p>
+    <%= label :export, :project_id %><br />
+    <%= select_tag :project_id, options_for_select([[ 'All project', -1 ], ['No project', -2]] | @projects.collect {|u| [ u.name, u.id ] }, @project_id) %>
+  </p>
+<% end %>
+</div>
+    </td>
+    <td>
+      <p>
+        <%= label_tag :month %>&nbsp;<br />
+        <%= select_tag :month, options_for_select([['Any month', -1],['Any month, any year', -2]] | monthnames, @month) %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <%= label_tag :year %>&nbsp;<br />
+        <%= text_field_tag :year, @year, :maxlength => 4, :size => 5 %>
+      </p>
+    </td>
+    <td>
+      <p>&nbsp;<br />
+        <%= submit_tag "Filter" %>
+      </p>
+    </td>
+  </tr>
+</table>
+<% end -%>
+<% if @timesheets.nil? %>
+<p>Nothing to display</p>
+<% else%>
+<table class="stats" style="width: 80%; height: 100px; text-align: left; margin-left: auto; margin-right: auto;">
+  <tr>
+    <th>Consultant <%= link_to '&darr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "1" %> <%= link_to '&uarr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "11" %></th>
+    <th>Month <%= link_to '&darr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "2" %> <%= link_to '&uarr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "12" %></th>
+    <th>Customer <%= link_to '&darr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "3" %> <%= link_to '&uarr;', :customer_id => @customer_id, :month => @month, :project_id => @project_id,  :year => @year, :sort => "13" %></th>
+    <th>Project</th>
+    <th colspan="4" class="center">Time</th>
+    <th>Total</th>
+    <th></th>
+  </tr>
+
+<% currid=0 %>
+<% curmonth='' %>
+<% curcust=0 %>
+<% for timesheet in @timesheets %>
+  <tr class="<%
+    if currid != timesheet.authuser_id and (@sort == '1' or @sort == '11' or @sort == '2' or @sort == '12')
+      %>topline <%
+    elsif curcust != timesheet.customer_id and (@sort == '3' or @sort == '13')
+      %>topline <%
+    end %><%= cycle('task-line-odd', 'task-line-even') %>">
+    <td<% if currid == timesheet.authuser_id %> class="repeat"<% else %><%currid = timesheet.authuser_id %><% end %>>
+      <%=h timesheet.authuser.fullname %>
+    </td>
+    <td><%= link_to "#{monthname(timesheet.month)} #{timesheet.year}", :controller => 'timesheets', :action => 'user', :month => timesheet.month, :year => timesheet.year, :id => currid %></td>
+    <td<% if curcust == timesheet.customer_id %> class="repeat"<% end %>>
+      <%=h timesheet.customer.name %>
+    </td>
+    <td><% if not timesheet.project.nil? %><%=h timesheet.project.name %><% end %></td>
+    <td class="normal"><abbr title="<%= dhm(timesheet.total_normal) %>"><%=h timesheet.total_normal %></abbr></td>
+    <td class="rate2"><abbr title="<%= dhm(timesheet.total_rate2) %>"><%=h timesheet.total_rate2 %></abbr></td>
+    <td class="rate3"><abbr title="<%= dhm(timesheet.total_rate3) %>"><%=h timesheet.total_rate3 %></abbr></td>
+    <td class="travel"><abbr title="<%= dhm(timesheet.total_travel) %>"><%=h timesheet.total_travel %></abbr></td>
+    <td><%= dhm_2(timesheet.total_normal+timesheet.total_rate2+timesheet.total_rate3+timesheet.total_travel) %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+  </tr>
+<% if curcust != timesheet.customer_id %>
+    <% curcust = timesheet.customer_id %>
+<% end %>
+<% if curmonth != timesheet.month %>
+    <% curmonth = timesheet.month %>
+<% end %>
+<% end %>
+<% end %>
+</table>
+
+<br />
+<table class="daygrid" width="100%">
+<tr bgcolor='#aaaaaa' style='text-align:center;'>
+  <td class='normal'>Normal</td>
+  <td class='rate2'>150%</td>
+  <td class='rate3'>200%</td>
+  <td class='travel'>Travel</td>
+</tr>
+</table>
+<br />
