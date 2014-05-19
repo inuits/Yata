@@ -40,7 +40,7 @@
     <td><%=h timesheet.customer.name %></td>
     <td><% if not timesheet.project.nil? %><%=h timesheet.project.name %><% end %></td>
     <td><%= link_to 'Show', timesheet %></td>
-    <td><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><% if allow_edit(timesheet) %><%= link_to 'Destroy', timesheet, :confirm => 'Are you sure?', :method => :delete %><% end %></td>
   </tr>
 <% end %>
 </table>

@@ -3,8 +3,10 @@
 <tr>
 <td><%= link_to 'Menu', :controller => 'welcome' %></td>
 <td><%= link_to 'Timesheets', timesheets_path %></td>
+<% if allow_edit(@timesheet) %>
 <td><%= link_to 'Edit header', edit_timesheet_path(@timesheet) %></td>
 <td><%= link_to_function("Add detail", "Element.show('new-task')")%>
+<% end %>
 </tr>
 </tbody>
 </table>
@@ -93,9 +95,21 @@
 	  </tr>
 	  <% for hour in Hour.find(:all, :order => 'day', :conditions => ["timesheet_id=?", @timesheet]) %>
 	  <tr class="<%= cycle('task-line-odd', 'task-line-even') %>">
-      <td width="5%"><% if not hour.weekday.nil?
-        %><span class="weekday"><%= link_to hour.weekday + " ", :action => 'edit', :controller => 'hours', :id => hour %></span><%
-        end %><%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %>
+      <td width="5%">
+	<% if not hour.weekday.nil? %>
+	   <span class="weekday">
+	     <% if allow_edit(@timesheet) %>
+	        <%= link_to hour.weekday + " ", :action => 'edit', :controller => 'hours', :id => hour %>
+	     <% else %>
+	        <%= hour.weekday + " " %>
+	     <% end %>
+	   </span>
+	<% end %>
+	<% if allow_edit(@timesheet) %>
+	   <%= link_to hour.day, :action => 'edit', :controller => 'hours', :id => hour %>
+	<% else %>
+	    <%= hour.day %>
+	<% end %>
       </td>
 	    <td width="60%"><%=h hour.detail %></td>
 	    <td><%=h hour.normal %></td>
