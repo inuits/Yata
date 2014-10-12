@@ -111,7 +111,11 @@
 	    <%= hour.day %>
 	<% end %>
       </td>
-	    <td width="60%"><%=h hour.detail %></td>
+	    <td width="60%" 
+<% if hour.nonbillable? %>
+  class="nonbillable"
+<% end %>
+            ><%=h hour.detail %></td>
 	    <td><%=h hour.normal %></td>
 	    <td><%=h hour.rate2 %></td>
 	    <td><%=h hour.rate3 %></td>

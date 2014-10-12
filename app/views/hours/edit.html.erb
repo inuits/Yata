@@ -4,7 +4,11 @@
 
 <table>
 <tr><th colspan=2></th><th colspan=4>Hours</th></tr>
-<tr><th>Day</th><th>Task</th><th>Normal</th><th>150%</th><th>200%</th><th>Travel</th></tr>
+<tr><th>Day</th><th>Task</th><th>Normal</th><th>150%</th><th>200%</th><th>Travel</th>
+<% if current_authuser.admin %>
+<th>Non Billable</th>
+<% end %>
+</tr>
 
   <tr>
     <td><%= f.text_field :day, :size => 3 %></td>
@@ -13,6 +17,9 @@
     <td><%= f.text_field :rate2, :size => 3 %></td>
     <td><%= f.text_field :rate3, :size => 3 %></td>
     <td><%= f.text_field :travel, :size => 3 %></td>
+<% if current_authuser.admin %>
+    <td><%= f.check_box :nonbillable %></td>
+<% end %>
   </tr>
 </table>
 <p><%= f.error_messages %></p>
