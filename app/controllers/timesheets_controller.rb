@@ -26,6 +26,7 @@ class TimesheetsController < ApplicationController
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @timesheets }
+        format.json  { render :json => @timesheets }
       end
     else
       redirect_back_or_default('/')
@@ -169,7 +170,7 @@ class TimesheetsController < ApplicationController
         @day[hour.day] = Array.new(@timesheets.size) if @day[hour.day].nil?
 
         if @day[hour.day][num].nil?
-          @day[hour.day][num]= Hash.new 
+          @day[hour.day][num]= Hash.new
         end
         if @day[hour.day][num]["normal"].nil?
           @day[hour.day][num]["normal"] = hour.normal unless hour.normal.nil?
