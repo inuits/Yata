@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :hours
 
-  map.resources :timesheets, :collection => { :all => :get, :user => :get }
+  map.resources :timesheets, :collection => { :all => :get, :user => :get, :create_hour => :post}
 
   map.resources :statistics, :collection => { :all => :get, :user => :get, :exports => :get, :generate_csv => :post }
 
@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments

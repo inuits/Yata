@@ -147,11 +147,15 @@ class TimesheetsController < ApplicationController
     end
   end
 
+  # POST /timesheets/create_hour.xml
   def create_hour
     @hour = Hour.new(params[:hour])
     @hour.timesheet_id= params[:id]
     if @hour.save
       render :partial => 'hour', :object => @hour
+      respond_to do |format|
+        format.xml  { head :ok }
+      end
     end
   end
 
