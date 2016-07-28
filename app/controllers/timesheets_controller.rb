@@ -151,10 +151,19 @@ class TimesheetsController < ApplicationController
   def create_hour
     @hour = Hour.new(params[:hour])
     @hour.timesheet_id= params[:id]
-    if @hour.save
-      render :partial => 'hour', :object => @hour
-      respond_to do |format|
+    
+    #if @hour.save
+    #  render :partial => 'hour', :object => @hour
+    #  respond_to do |format|
+    #    format.xml  { head :ok }
+    #  end
+    #end
+
+    respond_to do |format|
+      if @hour.save
         format.xml  { head :ok }
+      else
+        format.xml  { render :xml => @hour.errors, :status => :unprocessable_entity }
       end
     end
   end
