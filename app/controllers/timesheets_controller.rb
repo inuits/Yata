@@ -95,7 +95,7 @@ class TimesheetsController < ApplicationController
   def create
     puts params[:timesheet]
     @timesheet = Timesheet.new(params[:timesheet])
-    if @timesheet.authuser_id == 0
+    if @timesheet.authuser_id == nil
       @timesheet.authuser_id = current_authuser.id
     end
 
