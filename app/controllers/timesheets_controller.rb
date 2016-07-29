@@ -1,6 +1,6 @@
 class TimesheetsController < ApplicationController
   before_filter :login_required
-  protect_from_forgery :except => :show
+  protect_from_forgery :except => [:show, :create_hour]
 
   # GET /timesheets
   # GET /timesheets.xml
@@ -91,19 +91,24 @@ class TimesheetsController < ApplicationController
 
   # POST /timesheets
   # POST /timesheets.xml
+  # POST /timesheets.json
   def create
     puts params[:timesheet]
     @timesheet = Timesheet.new(params[:timesheet])
-    @timesheet.authuser_id = current_authuser.id
+    if @timesheet.authuser_id == 0
+      @timesheet.authuser_id = current_authuser.id
+    end
 
     respond_to do |format|
       if @timesheet.save
         flash[:notice] = 'Timesheet was successfully created.'
         format.html { redirect_to(@timesheet) }
         format.xml  { render :xml => @timesheet, :status => :created, :location => @timesheet }
+        format.json  { render :json => @timesheet, :status => :created, :location => @timesheet }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @timesheet.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @timesheet.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -147,23 +152,22 @@ class TimesheetsController < ApplicationController
     end
   end
 
+  # POST /timesheets/create_hour
   # POST /timesheets/create_hour.xml
+  # POST /timesheets/create_hour.json
   def create_hour
     @hour = Hour.new(params[:hour])
     @hour.timesheet_id= params[:id]
 
-    #if @hour.save
-    #  render :partial => 'hour', :object => @hour
-    #  respond_to do |format|
-    #    format.xml  { head :ok }
-    #  end
-    #end 
-
     respond_to do |format|
       if @hour.save
-        format.xml  { head :ok }
+        format.html {render :partial => 'hour', :object => @hour}
+        format.xml  { render :xml => @hour }
+        format.json  { render :json => @hour }
       else
+        format.html
         format.xml  { render :xml => @hour.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @hour.errors, :status => :unprocessable_entity }
       end
     end
   end
