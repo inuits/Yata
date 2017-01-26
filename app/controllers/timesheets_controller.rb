@@ -70,7 +70,7 @@ class TimesheetsController < ApplicationController
 
   # POST /timesheets/update_project_div
   def update_project_div
-    @projects = Project.find(:all, :conditions => ["customer_id = ?", params[:timesheet_customer_id]])
+    @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", params[:timesheet_customer_id]])
     respond_to do |format|
       format.html
       format.js
@@ -85,7 +85,7 @@ class TimesheetsController < ApplicationController
       redirect_to :root
       return
     end
-    @projects = Project.find(:all, :conditions => ["customer_id = ?", @timesheet.customer_id])
+    @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", @timesheet.customer_id])
   end
 
 

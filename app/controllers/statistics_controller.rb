@@ -46,7 +46,7 @@ class StatisticsController < ApplicationController
     if not params[:customer_id].nil? and params[:customer_id].to_i != -1
       conditions_text += " AND customer_id = #{params[:customer_id].to_i}"
       @customer_id= params[:customer_id].to_i
-      @projects = Project.find(:all, :conditions => ["customer_id = ?", params[:customer_id]])
+      @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", params[:customer_id]])
     else
       @customer_id= -1
     end
@@ -98,7 +98,7 @@ class StatisticsController < ApplicationController
 
   # POST /timesheets/update_project_div
   def update_project_div
-    @projects = Project.find(:all, :conditions => ["customer_id = ?", params[:customer_id]])
+    @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", params[:customer_id]])
     respond_to do |format|
       format.html
       format.js
