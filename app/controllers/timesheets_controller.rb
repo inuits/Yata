@@ -70,7 +70,11 @@ class TimesheetsController < ApplicationController
 
   # POST /timesheets/update_project_div
   def update_project_div
-    @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", params[:timesheet_customer_id]])
+    if current_authuser.admin
+      @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", params[:timesheet_customer_id]])
+    else
+      @projects = Project.find(:all, :order => :name, :conditions => ["name NOT LIKE '_closed_%' and customer_id = ?", params[:timesheet_customer_id]])
+    end
     respond_to do |format|
       format.html
       format.js
@@ -85,7 +89,11 @@ class TimesheetsController < ApplicationController
       redirect_to :root
       return
     end
-    @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", @timesheet.customer_id])
+    if current_authuser.admin
+      @projects = Project.find(:all, :order => :name, :conditions => ["customer_id = ?", @timesheet.customer_id])
+    else
+      @projects = Project.find(:all, :order => :name, :conditions => ["name NOT LIKE '_closed_%' and customer_id = ?", @timesheet.customer_id])
+    end
   end
 
 

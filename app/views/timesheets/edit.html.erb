@@ -15,7 +15,11 @@
 
   <p>
     <%= f.label :customer_id %><br />
-    <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
+    <% if current_authuser.admin %>
+      <%= f.select :customer_id, Customer.find(:all, :order => :name).collect {|u| [ u.name, u.id ] } %>
+    <% else %>
+      <%= f.select :customer_id, Customer.find(:all, :order => :name, :conditions => "name NOT LIKE '_closed_%'").collect {|u| [ u.name, u.id ] } %>
+    <% end %>
     <%= observe_field :timesheet_customer_id, :url => {:action => :update_project_div},  :with => :timesheet_customer_id %>
   </p>
   <div id="project_div">
