@@ -1,6 +1,9 @@
 Yet Another Timesheet Application
 ===
 
+!! This repo is archived and we are no longer maintaining it.
+Please have a look at https://github.com/inuits.yayata instead
+
 YATA is the application used internally at Inuits to generate invoices. It allows you to create detailed timesheets.
 
 Features
